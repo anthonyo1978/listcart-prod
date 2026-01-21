@@ -1,0 +1,184 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum CartStatus {
+  DRAFT
+  SENT
+  VENDOR_APPROVED
+  INVOICE_SENT
+  PAID
+  APPROVED
+}
+
+enum PaymentChoice {
+  PAY_NOW
+  PAY_LATER
+}
+
+enum SupplierType {
+  PHOTOGRAPHER
+  COPYWRITER
+  SIGNBOARD
+  DIGITAL
+  STYLIST
+}
+
+enum OutboundEmailType {
+  AGENT_SUMMARY
+  SUPPLIER_WORK_ORDER
+}
+
+enum VendorCommunicationMode {
+  FIRST_COME_FIRST_SERVE
+  REVIEW_AND_APPROVE
+}
+
+enum PaymentPreference {
+  CARD
+  PAY_LATER
+  NOT_SURE
+}
+
+enum CartItemStatus {
+  PENDING
+  PROVIDER_ACCEPTED
+  AGENT_APPROVED
+}
+
+// Models
+model Cart {
+  id                      String                   @id @default(cuid())
+  friendlyId              String                   @unique
+  createdAt               DateTime                 @default(now())
+  updatedAt               DateTime                 @updatedAt
+  status                  CartStatus               @default(DRAFT)
+  propertyAddress         String
+  vendorName              String
+  vendorEmail             String?
+  vendorPhone             String?
+  agentName               String
+  agentEmail              String
+  token                   String                   @unique
+  approvedAt              DateTime?
+  paymentChoice           PaymentChoice?
+  totalCents              Int                      @default(0)
+  vendorCommunicationMode VendorCommunicationMode?
+  paymentPreference       PaymentPreference?
+  
+  items           CartItem[]
+  outboundEmails  OutboundEmail[]
+  
+  @@index([token])
+  @@index([friendlyId])
+}
+
+model CartItem {
+  id                    String          @id @default(cuid())
+  cartId                String
+  serviceKey            String
+  name                  String
+  description           String
+  supplierType          SupplierType
+  priceCents            Int
+  selected              Boolean         @default(false)
+  agentNotes            String?
+  vendorId              String?
+  itemStatus            CartItemStatus  @default(PENDING)
+  providerResponse      String?
+  providerQuoteCents    Int?
+  providerAvailableDate String?
+  
+  cart         Cart         @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  vendor       Vendor?      @relation(fields: [vendorId], references: [id], onDelete: SetNull)
+  
+  @@index([cartId])
+  @@index([vendorId])
+}
+
+model OutboundEmail {
+  id           String             @id @default(cuid())
+  cartId       String
+  type         OutboundEmailType
+  supplierType SupplierType?
+  toEmail      String?
+  subject      String
+  bodyText     String
+  createdAt    DateTime           @default(now())
+  
+  cart         Cart               @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  
+  @@index([cartId])
+}
+
+// Service Categories
+model Service {
+  id              String       @id @default(cuid())
+  serviceKey      String       @unique
+  name            String
+  description     String
+  supplierType    SupplierType
+  priceCents      Int
+  displayOrder    Int          @default(0)
+  isActive        Boolean      @default(true)
+  defaultSelected Boolean      @default(false)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  
+  @@index([displayOrder])
+  @@index([serviceKey])
+}
+
+// Vendor Management
+model Vendor {
+  id           String          @id @default(cuid())
+  businessName String
+  contactName  String?
+  email        String?
+  phone        String?
+  notes        String?
+  isActive     Boolean         @default(true)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  
+  serviceVendors ServiceVendor[]
+  cartItems      CartItem[]
+}
+
+// Junction table: Services <-> Vendors with pricing
+model ServiceVendor {
+  id           String       @id @default(cuid())
+  vendorId     String
+  serviceKey   String
+  priceCents   Int
+  isPreferred  Boolean      @default(false)
+  displayOrder Int          @default(0)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  
+  vendor       Vendor       @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  
+  @@unique([vendorId, serviceKey])
+  @@index([serviceKey])
+  @@index([vendorId])
+  @@index([displayOrder])
+}
+
+// Agent Settings
+model AgentSettings {
+  id                          String   @id @default(cuid())
+  agentEmail                  String   @unique
+  globalCommissionPercent     Float    @default(0)
+  autoApplyCommission         Boolean  @default(false)
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+}
