@@ -21,9 +21,9 @@ export default async function AgentCartPage({
   }
 
   const vendorLink = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/v/${cart.token}`
-  const selectedItems = cart.items.filter((item) => item.selected)
+  const selectedItems = cart.items.filter((item: any) => item.selected)
   const approvedServices = cart.items.filter(
-    (item) => item.selected && (item as any).itemStatus === 'AGENT_APPROVED'
+    (item: any) => item.selected && (item as any).itemStatus === 'AGENT_APPROVED'
   )
   
   // Calculate estimated total from selected items (for pre-approval display)
