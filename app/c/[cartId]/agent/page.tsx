@@ -233,7 +233,7 @@ export default async function AgentCartPage({
         <AgentCartClient 
           vendorLink={vendorLink} 
           cartId={cart.id}
-          approvedServices={approvedServices.map(item => ({
+          approvedServices={approvedServices.map((item: any) => ({
             name: item.name,
             priceCents: item.priceCents,
             providerQuoteCents: (item as any).providerQuoteCents,
