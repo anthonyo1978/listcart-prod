@@ -54,7 +54,7 @@ export default async function AgentCartPage({
     const uniqueEmails = new Set(
       vendors
         .map((sv: any) => sv.vendor.email)
-        .filter((email): email is string => !!email)
+        .filter((email: any): email is string => !!email)
     )
     selectedVendorCount = uniqueEmails.size
   }
