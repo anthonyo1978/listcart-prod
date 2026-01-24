@@ -30,7 +30,7 @@ export function ServiceBuilder({ items, cartId, isApproved }: ServiceBuilderProp
     
     startTransition(async () => {
       await updateCartItem(item.id, cartId, {
-        agentNotes: notes || null,
+        agentNotes: notes || undefined,
       })
     })
   }
