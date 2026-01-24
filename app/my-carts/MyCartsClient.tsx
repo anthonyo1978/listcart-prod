@@ -74,7 +74,7 @@ function StatusBadge({ status }: { status: CartStatus }) {
 function CartCard({ cart }: { cart: CartSummary }) {
   const selectedItems = cart.items.filter((item) => item.selected)
   const approvedItems = selectedItems.filter(
-    (item) => item.itemStatus === 'VENDOR_APPROVED'
+    (item) => item.itemStatus === 'AGENT_APPROVED'
   )
 
   const formattedDate = new Date(cart.createdAt).toLocaleDateString('en-AU', {
