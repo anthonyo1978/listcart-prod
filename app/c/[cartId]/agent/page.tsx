@@ -27,7 +27,7 @@ export default async function AgentCartPage({
   )
   
   // Calculate estimated total from selected items (for pre-approval display)
-  const estimatedTotal = selectedItems.reduce((sum, item) => sum + item.priceCents, 0)
+  const estimatedTotal = selectedItems.reduce((sum: number, item: any) => sum + item.priceCents, 0)
   // Use actual total if approved, otherwise show estimated
   const displayTotal = cart.status === 'APPROVED' ? cart.totalCents : estimatedTotal
   
