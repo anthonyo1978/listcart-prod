@@ -79,9 +79,9 @@ export async function POST(request: NextRequest) {
     const vendor = await prisma.vendor.create({
       data: {
         businessName,
-        contactName: contactName || null,
-        email: email || null,
-        phone: phone || null,
+        contactName: contactName || undefined,
+        email: email || undefined,
+        phone: phone || undefined,
         serviceVendors: {
           create: {
             serviceKey,

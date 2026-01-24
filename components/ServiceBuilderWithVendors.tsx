@@ -344,7 +344,7 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
                           }
                           startTransition(async () => {
                             await updateCartItem(item.id, cartId, {
-                              agentNotes: e.target.value || null,
+                              agentNotes: e.target.value || undefined,
                             })
                           })
                         }}
