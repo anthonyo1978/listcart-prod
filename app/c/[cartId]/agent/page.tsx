@@ -33,7 +33,7 @@ export default async function AgentCartPage({
   
   // Count unique vendors from ServiceVendor relationships for selected services
   const { prisma } = await import('@/lib/prisma')
-  const selectedServiceKeys = selectedItems.map((item) => item.serviceKey)
+  const selectedServiceKeys = selectedItems.map((item: any) => item.serviceKey)
   
   let selectedVendorCount = 0
   if (selectedServiceKeys.length > 0) {
@@ -53,7 +53,7 @@ export default async function AgentCartPage({
     // Count unique vendor emails
     const uniqueEmails = new Set(
       vendors
-        .map((sv) => sv.vendor.email)
+        .map((sv: any) => sv.vendor.email)
         .filter((email): email is string => !!email)
     )
     selectedVendorCount = uniqueEmails.size
