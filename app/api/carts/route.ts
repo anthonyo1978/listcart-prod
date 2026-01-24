@@ -26,7 +26,7 @@ export async function GET() {
           select: {
             id: true,
             selected: true,
-            status: true,
+            itemStatus: true,
           },
         },
       },
