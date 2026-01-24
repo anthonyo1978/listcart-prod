@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
       ],
     })
 
-    const vendors = serviceVendors.map((sv) => ({
+    const vendors = serviceVendors.map((sv: any) => ({
       id: sv.vendor.id,
       serviceVendorId: sv.id,
       businessName: sv.vendor.businessName,
