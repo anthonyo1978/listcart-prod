@@ -79,7 +79,7 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
     saveTimeoutRef.current[itemId] = setTimeout(() => {
       startTransition(async () => {
         await updateCartItem(itemId, cartId, {
-          agentNotes: notes || null,
+          agentNotes: notes || undefined,
         })
       })
     }, 1500) // Save 1.5s after user stops typing
