@@ -302,7 +302,7 @@ export default async function AgentCartPage({
               production, these would be sent to the respective recipients.
             </p>
             <div className="space-y-4">
-              {cart.outboundEmails.map((email) => (
+              {cart.outboundEmails.map((email: any) => (
                 <details
                   key={email.id}
                   className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
