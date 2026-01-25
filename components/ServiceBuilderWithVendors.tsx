@@ -2,7 +2,7 @@
 
 import { useState, useTransition, useEffect, useRef } from 'react'
 import { formatCurrencyAUD } from '@/lib/services'
-import { updateCartItem, progressCartItemStatus } from '@/lib/actions'
+import { updateCartItem, progressCartItemStatus, updateCartItemVendor } from '@/lib/actions'
 import type { CartItem } from '@prisma/client'
 
 interface Vendor {
@@ -85,6 +85,17 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
     }, 1500) // Save 1.5s after user stops typing
   }
   
+  // Initialize selected vendors from cart items
+  useEffect(() => {
+    const initialSelections: Record<string, Set<string>> = {}
+    items.forEach((item) => {
+      if (item.vendorId) {
+        initialSelections[item.id] = new Set([item.vendorId])
+      }
+    })
+    setSelectedVendors(initialSelections)
+  }, []) // Only run on mount
+  
   // Cleanup timeouts on unmount
   useEffect(() => {
     return () => {
@@ -124,15 +135,31 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
     setExpandedVendors(newExpanded)
   }
 
-  const toggleVendorSelection = (itemId: string, vendorId: string) => {
+  const toggleVendorSelection = (itemId: string, vendorId: string, vendorPriceCents: number) => {
+    const itemVendors = selectedVendors[itemId] || new Set()
+    const isCurrentlySelected = itemVendors.has(vendorId)
+    
+    // Update UI state immediately
     setSelectedVendors((prev) => {
-      const itemVendors = new Set(prev[itemId] || [])
-      if (itemVendors.has(vendorId)) {
-        itemVendors.delete(vendorId)
+      const newItemVendors = new Set(prev[itemId] || [])
+      if (isCurrentlySelected) {
+        newItemVendors.delete(vendorId)
       } else {
-        itemVendors.add(vendorId)
+        newItemVendors.clear() // Only one vendor per service
+        newItemVendors.add(vendorId)
       }
-      return { ...prev, [itemId]: itemVendors }
+      return { ...prev, [itemId]: newItemVendors }
+    })
+    
+    // Save to database
+    startTransition(async () => {
+      if (isCurrentlySelected) {
+        // Deselecting - clear vendor and price
+        await updateCartItemVendor(itemId, cartId, null, 0)
+      } else {
+        // Selecting - set vendor and price
+        await updateCartItemVendor(itemId, cartId, vendorId, vendorPriceCents)
+      }
     })
   }
 
@@ -287,8 +314,9 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
                             <input
                               type="checkbox"
                               checked={itemSelectedVendors.has(vendor.id)}
-                              onChange={() => toggleVendorSelection(item.id, vendor.id)}
+                              onChange={() => toggleVendorSelection(item.id, vendor.id, vendor.priceCents)}
                               className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                              disabled={isPending}
                             />
                             <div className="flex-1">
                               <div className="flex items-center justify-between">

@@ -345,6 +345,29 @@ export async function updateCartItem(
   }
 }
 
+// Update cart item with vendor selection and price
+export async function updateCartItemVendor(
+  itemId: string,
+  cartId: string,
+  vendorId: string | null,
+  priceCents: number
+) {
+  try {
+    await prisma.cartItem.update({
+      where: { id: itemId },
+      data: {
+        vendorId: vendorId,
+        priceCents: priceCents,
+      },
+    })
+    revalidatePath(`/c/${cartId}/agent`)
+    return { success: true }
+  } catch (error) {
+    console.error('Error updating cart item vendor:', error)
+    return { success: false, error: 'Failed to update vendor' }
+  }
+}
+
 // Send cart to vendors
 export async function sendCartToVendors(
   cartId: string,
