@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { formatCurrencyAUD } from '@/lib/services'
-import { updateCartItemStatus } from '@/lib/actions'
+import { progressCartItemStatus } from '@/lib/actions'
 
 type MessageReaction = {
   emoji: string
