@@ -30,9 +30,18 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
   const saveTimeoutRef = useRef<Record<string, NodeJS.Timeout>>({})
   const [showMarginBreakdown, setShowMarginBreakdown] = useState(false)
   const [commissionPercent, setCommissionPercent] = useState(0)
+  
+  // Optimistic UI: Local state for instant updates
+  const [optimisticItems, setOptimisticItems] = useState<Record<string, Partial<CartItem>>>({})
 
   const isEditable = cartStatus === 'DRAFT'
   const isCorrespondenceMode = cartStatus === 'SENT'
+  
+  // Merge server items with optimistic updates
+  const displayItems = items.map(item => ({
+    ...item,
+    ...optimisticItems[item.id]
+  }))
 
   // Load global commission percentage
   useEffect(() => {
@@ -49,10 +58,25 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
   const handleToggle = (item: CartItem) => {
     if (!isEditable) return
     
+    // Optimistic update: Update UI immediately
+    const newSelected = !item.selected
+    setOptimisticItems(prev => ({
+      ...prev,
+      [item.id]: { ...prev[item.id], selected: newSelected }
+    }))
+    
+    // Send to server in background
     startTransition(async () => {
-      await updateCartItem(item.id, cartId, {
-        selected: !item.selected,
+      const result = await updateCartItem(item.id, cartId, {
+        selected: newSelected,
       })
+      // Clear optimistic update on success (server is source of truth)
+      if (result.success) {
+        setOptimisticItems(prev => {
+          const { [item.id]: _, ...rest } = prev
+          return rest
+        })
+      }
     })
   }
 
@@ -139,7 +163,19 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
     const itemVendors = selectedVendors[itemId] || new Set()
     const isCurrentlySelected = itemVendors.has(vendorId)
     
-    // Update UI state immediately
+    // Optimistic update: Update UI immediately
+    const newVendorId = isCurrentlySelected ? null : vendorId
+    const newPrice = isCurrentlySelected ? 0 : vendorPriceCents
+    
+    setOptimisticItems(prev => ({
+      ...prev,
+      [itemId]: { 
+        ...prev[itemId], 
+        vendorId: newVendorId, 
+        priceCents: newPrice 
+      }
+    }))
+    
     setSelectedVendors((prev) => {
       const newItemVendors = new Set(prev[itemId] || [])
       if (isCurrentlySelected) {
@@ -151,26 +187,27 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
       return { ...prev, [itemId]: newItemVendors }
     })
     
-    // Save to database
+    // Save to database in background
     startTransition(async () => {
-      if (isCurrentlySelected) {
-        // Deselecting - clear vendor and price
-        await updateCartItemVendor(itemId, cartId, null, 0)
-      } else {
-        // Selecting - set vendor and price
-        await updateCartItemVendor(itemId, cartId, vendorId, vendorPriceCents)
+      const result = await updateCartItemVendor(itemId, cartId, newVendorId, newPrice)
+      // Clear optimistic update on success
+      if (result.success) {
+        setOptimisticItems(prev => {
+          const { [itemId]: _, ...rest } = prev
+          return rest
+        })
       }
     })
   }
 
-  const selectedItems = items.filter((item) => item.selected)
+  const selectedItems = displayItems.filter((item) => item.selected)
   const totalCents = selectedItems.reduce((sum, item) => sum + item.priceCents, 0)
 
   return (
     <div className="space-y-4">
       {/* Service Selection */}
       <div className="space-y-3">
-        {items.map((item) => {
+        {displayItems.map((item) => {
           const vendors = vendorsByService[item.serviceKey] || []
           const itemSelectedVendors = selectedVendors[item.id] || new Set()
 

@@ -75,7 +75,7 @@ export async function createCart(formData: FormData) {
             description: service.description,
             supplierType: service.supplierType,
             priceCents: 0, // Start at $0 - price set when vendor selected
-            selected: service.defaultSelected,
+            selected: false, // Nothing selected by default
           })),
         },
       },
