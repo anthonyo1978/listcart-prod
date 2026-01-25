@@ -2,6 +2,9 @@ import { prisma } from '@/lib/prisma'
 import { MyCartsClient } from './MyCartsClient'
 import { UserMenu } from '@/components/UserMenu'
 
+// Force dynamic rendering - don't pre-render at build time
+export const dynamic = 'force-dynamic'
+
 export default async function MyCartsPage() {
   // Fetch all carts for the authenticated user
   // TODO: In production, filter by authenticated user's email
