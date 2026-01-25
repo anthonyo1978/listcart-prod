@@ -337,7 +337,7 @@ export async function updateCartItem(
       where: { id: itemId },
       data,
     })
-    revalidatePath(`/c/${cartId}/agent`)
+    // Removed revalidatePath for performance - use router.refresh() in UI when needed
     return { success: true }
   } catch (error) {
     console.error('Error updating cart item:', error)
@@ -360,8 +360,8 @@ export async function updateCartItemVendor(
         priceCents: priceCents,
       },
     })
-    revalidatePath(`/c/${cartId}/agent`)
-    return { success: true }
+    // Removed revalidatePath for performance - use router.refresh() in UI when needed
+    return { success: true, vendorId, priceCents }
   } catch (error) {
     console.error('Error updating cart item vendor:', error)
     return { success: false, error: 'Failed to update vendor' }
