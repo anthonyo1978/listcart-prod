@@ -251,11 +251,68 @@ export default function Home() {
               Simple, Transparent Pricing
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              Small platform fee per transaction. Agents gain hours back. Vendors get more work.
+              Pay only when you use it. No monthly fees. No surprises.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto">
+            {/* Single Pricing Card */}
+            <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-12 rounded-3xl shadow-2xl text-center">
+              <h3 className="text-3xl font-bold text-white mb-4">Pay Per Transaction</h3>
+              <div className="mb-8">
+                <span className="text-6xl font-bold text-white">5%</span>
+                <p className="text-blue-100 text-xl mt-2">Platform fee per cart</p>
+              </div>
+              
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8">
+                <h4 className="text-2xl font-bold text-white mb-6">How It Works</h4>
+                <ul className="space-y-4 text-left">
+                  <li className="flex items-start">
+                    <svg className="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-white text-lg">ListCart charges a <strong>5% platform fee</strong> on the total cart value</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-white text-lg">Agents can add their own <strong>commission percentage</strong> (fully customizable)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-white text-lg">Agent's commission is <strong>passed on to the vendor</strong> (transparent pricing)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-white text-lg"><strong>No monthly subscription</strong> - only pay when you create a cart</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8">
+                <h4 className="text-white font-semibold mb-3 text-lg">Example:</h4>
+                <p className="text-blue-100 text-left">
+                  Cart total: $1,000 | Agent commission: 2% | Platform fee: 5%
+                  <br />
+                  <span className="text-white font-semibold">→ Final vendor receives: $1,070 (original $1,000 + $20 agent commission + $50 platform fee)</span>
+                  <br />
+                  <span className="text-green-300 text-sm">*Agent earns $20, Platform earns $50, Vendor gets paid in full*</span>
+                </p>
+              </div>
+
+              <button className="w-full py-4 bg-white text-indigo-600 font-bold text-lg rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
+                Get Started Free
+              </button>
+            </div>
+          </div>
+
+          {/* Old pricing cards removed - keeping commented for reference */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto" style={{display: 'none'}}>
             {/* Starter Plan */}
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-700">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Starter</h3>
@@ -365,7 +422,7 @@ export default function Home() {
                 Contact Sales
               </button>
             </div>
-          </div>
+          </div> {/* End of hidden old pricing cards */}
         </div>
       </section>
 
