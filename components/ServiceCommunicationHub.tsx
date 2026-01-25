@@ -271,12 +271,14 @@ function getRelativeTime(date: Date): string {
 }
 
 function StatusBadge({ status }: { status: string }) {
-  const config = {
+  const configs: Record<string, { label: string; color: string; icon: string }> = {
     pending: { label: 'Waiting', color: 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300', icon: '⏳' },
     active: { label: 'In Discussion', color: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300', icon: '💬' },
     quoted: { label: 'Quote Received', color: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300', icon: '✅' },
     approved: { label: 'Approved', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300', icon: '🎉' },
-  }[status] || config.pending
+  }
+  
+  const config = configs[status] || configs.pending
 
   return (
     <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${config.color}`}>
