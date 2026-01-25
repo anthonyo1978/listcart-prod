@@ -247,7 +247,10 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
                     <input
                       type="checkbox"
                       checked={item.selected}
-                      onChange={() => handleToggle(item)}
+                      onChange={(e) => {
+                        e.stopPropagation()
+                        handleToggle(item)
+                      }}
                       disabled={!isEditable || isPending}
                       className="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:opacity-50"
                       onClick={(e) => e.stopPropagation()}
