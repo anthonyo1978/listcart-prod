@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useTransition, useEffect, useRef } from 'react'
+import { useState, useTransition, useEffect, useRef, useMemo, useCallback } from 'react'
 import { formatCurrencyAUD } from '@/lib/services'
 import { updateCartItem, progressCartItemStatus, updateCartItemVendor } from '@/lib/actions'
 import type { CartItem } from '@prisma/client'
@@ -37,11 +37,13 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
   const isEditable = cartStatus === 'DRAFT'
   const isCorrespondenceMode = cartStatus === 'SENT'
   
-  // Merge server items with optimistic updates
-  const displayItems = items.map(item => ({
-    ...item,
-    ...optimisticItems[item.id]
-  }))
+  // Merge server items with optimistic updates (memoized to prevent flicker)
+  const displayItems = useMemo(() => {
+    return items.map(item => ({
+      ...item,
+      ...optimisticItems[item.id]
+    }))
+  }, [items, optimisticItems])
 
   // Load global commission percentage
   useEffect(() => {
@@ -127,37 +129,42 @@ export function ServiceBuilder({ items, cartId, isApproved, cartStatus }: Servic
     }
   }, [])
 
-  const toggleNotes = (itemId: string) => {
-    const newExpanded = new Set(expandedNotes)
-    if (newExpanded.has(itemId)) {
-      newExpanded.delete(itemId)
-    } else {
-      newExpanded.add(itemId)
-    }
-    setExpandedNotes(newExpanded)
-  }
+  const toggleNotes = useCallback((itemId: string) => {
+    setExpandedNotes(prev => {
+      const newExpanded = new Set(prev)
+      if (newExpanded.has(itemId)) {
+        newExpanded.delete(itemId)
+      } else {
+        newExpanded.add(itemId)
+      }
+      return newExpanded
+    })
+  }, [])
 
-  const toggleVendors = async (itemId: string, serviceKey: string) => {
-    const newExpanded = new Set(expandedVendors)
-    if (newExpanded.has(itemId)) {
-      newExpanded.delete(itemId)
-    } else {
-      newExpanded.add(itemId)
-      // Fetch vendors if not already loaded
-      if (!vendorsByService[serviceKey]) {
-        try {
-          const res = await fetch(`/api/vendors?serviceKey=${serviceKey}`)
-          if (res.ok) {
-            const vendors = await res.json()
-            setVendorsByService((prev) => ({ ...prev, [serviceKey]: vendors }))
-          }
-        } catch (error) {
-          console.error('Failed to load vendors:', error)
+  const toggleVendors = useCallback(async (itemId: string, serviceKey: string) => {
+    setExpandedVendors(prev => {
+      const newExpanded = new Set(prev)
+      if (newExpanded.has(itemId)) {
+        newExpanded.delete(itemId)
+      } else {
+        newExpanded.add(itemId)
+      }
+      return newExpanded
+    })
+    
+    // Fetch vendors if not already loaded
+    if (!vendorsByService[serviceKey]) {
+      try {
+        const res = await fetch(`/api/vendors?serviceKey=${serviceKey}`)
+        if (res.ok) {
+          const vendors = await res.json()
+          setVendorsByService((prev) => ({ ...prev, [serviceKey]: vendors }))
         }
+      } catch (error) {
+        console.error('Failed to load vendors:', error)
       }
     }
-    setExpandedVendors(newExpanded)
-  }
+  }, [vendorsByService])
 
   const toggleVendorSelection = (itemId: string, vendorId: string, vendorPriceCents: number) => {
     const itemVendors = selectedVendors[itemId] || new Set()
