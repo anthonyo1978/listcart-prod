@@ -244,69 +244,96 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Simple, Transparent Pricing
+      <section id="pricing" className="py-16 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+              💰 Monetize Every Listing
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400">
-              Pay only when you use it. No monthly fees. No surprises.
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              Turn your service coordination into a revenue stream
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            {/* Single Pricing Card */}
-            <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-12 rounded-3xl shadow-2xl text-center">
-              <h3 className="text-3xl font-bold text-white mb-4">Pay Per Transaction</h3>
-              <div className="mb-8">
-                <span className="text-6xl font-bold text-white">5%</span>
-                <p className="text-blue-100 text-xl mt-2">Platform fee per cart</p>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Hero: Agent Earning Potential */}
+            <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-8 rounded-2xl shadow-xl text-white">
+              <div className="flex items-center mb-4">
+                <svg className="w-10 h-10 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                </svg>
+                <h3 className="text-2xl font-bold">You Set Your Commission</h3>
               </div>
-              
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8">
-                <h4 className="text-2xl font-bold text-white mb-6">How It Works</h4>
-                <ul className="space-y-4 text-left">
-                  <li className="flex items-start">
-                    <svg className="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-white text-lg">ListCart charges a <strong>5% platform fee</strong> on the total cart value</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-white text-lg">Agents can add their own <strong>commission percentage</strong> (fully customizable)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-white text-lg">Agent's commission is <strong>passed on to the vendor</strong> (transparent pricing)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-white text-lg"><strong>No monthly subscription</strong> - only pay when you create a cart</span>
-                  </li>
-                </ul>
+              <p className="text-green-100 mb-6 text-lg">
+                Add your own markup (1%, 2%, 5%... you decide!) and earn on every service you coordinate.
+              </p>
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 mb-6">
+                <div className="text-sm text-green-100 mb-2">Example earning:</div>
+                <div className="text-3xl font-bold mb-2">$100-$500+</div>
+                <div className="text-sm text-green-100">per listing, based on your commission rate</div>
               </div>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-200 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm">Full control over your pricing</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-200 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm">Transparent to vendors</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-200 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm">Passive income on every listing</span>
+                </li>
+              </ul>
+            </div>
 
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8">
-                <h4 className="text-white font-semibold mb-3 text-lg">Example:</h4>
-                <p className="text-blue-100 text-left">
-                  Cart total: $1,000 | Agent commission: 2% | Platform fee: 5%
-                  <br />
-                  <span className="text-white font-semibold">→ Final vendor receives: $1,070 (original $1,000 + $20 agent commission + $50 platform fee)</span>
-                  <br />
-                  <span className="text-green-300 text-sm">*Agent earns $20, Platform earns $50, Vendor gets paid in full*</span>
+            {/* Simple Platform Fee Info */}
+            <div className="space-y-6">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border-2 border-gray-200 dark:border-gray-700">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Platform Fee</h4>
+                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">5%</span>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Simple, transparent fee per cart. No monthly subscription. No hidden costs.
                 </p>
               </div>
 
-              <button className="w-full py-4 bg-white text-indigo-600 font-bold text-lg rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
-                Get Started Free
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-3 text-sm">Quick Example:</h4>
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="flex justify-between">
+                    <span>Services total:</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">$1,000</span>
+                  </div>
+                  <div className="flex justify-between text-green-600 dark:text-green-400">
+                    <span>Your 2% commission:</span>
+                    <span className="font-semibold">+$20</span>
+                  </div>
+                  <div className="flex justify-between text-blue-600 dark:text-blue-400">
+                    <span>Platform 5% fee:</span>
+                    <span className="font-semibold">+$50</span>
+                  </div>
+                  <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-2"></div>
+                  <div className="flex justify-between font-bold text-gray-900 dark:text-white">
+                    <span>Vendor receives:</span>
+                    <span>$1,070</span>
+                  </div>
+                  <div className="text-xs text-green-600 dark:text-green-400 mt-2 bg-green-50 dark:bg-green-900/20 p-2 rounded">
+                    ✓ You earn $20 | Platform earns $50 | Vendor paid in full
+                  </div>
+                </div>
+              </div>
+
+              <button className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all shadow-lg">
+                Start Earning Today
               </button>
             </div>
           </div>
