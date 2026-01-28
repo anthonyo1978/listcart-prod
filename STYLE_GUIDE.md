@@ -1,5 +1,7 @@
 # 🎨 STYLE GUIDE - ListCart Design System
 
+> ✅ **USE FOR:** Styling and Tailwind decisions only. Read BOT_BRIEF.md first.
+
 **Purpose:** Tailwind patterns, component styles, and design consistency rules.
 
 ---

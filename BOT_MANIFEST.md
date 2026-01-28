@@ -1,5 +1,7 @@
 # 📁 BOT MANIFEST - File Map & Context
 
+> ✅ **USE FOR:** Locating files and routes only. Read BOT_BRIEF.md first.
+
 **Purpose:** Quick reference to locate any file or component in the repo.
 
 ---

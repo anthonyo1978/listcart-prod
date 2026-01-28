@@ -1,5 +1,7 @@
 # 🗄️ SUPABASE NOTES - Database & Environment
 
+> ✅ **USE FOR:** Database and environment variables only. Read BOT_BRIEF.md first.
+
 **Purpose:** How the database works, environment variables, and how to avoid breaking production.
 
 ---

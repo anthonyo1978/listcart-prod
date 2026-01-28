@@ -2,10 +2,14 @@
 
 **Repo:** listcart-prod | **Stack:** Next.js 16 + TypeScript + Tailwind + Supabase + Vercel
 
-## 📍 READ FIRST
-- **BOT_BRIEF.md** - Start here, always
-- **BOT_MANIFEST.md** - File map & where to find things
-- **CHANGE_PLAYBOOK.md** - How to make changes safely
+## ⚠️ READING ORDER (STRICT)
+1. ✅ **BOT_BRIEF.md** - Always read in full (primary source of truth)
+2. 📁 **BOT_MANIFEST.md** - Use ONLY to locate files
+3. 🎨 **STYLE_GUIDE.md** - Use ONLY for styling decisions
+4. 🗄️ **SUPABASE_NOTES.md** - Use ONLY for database/env vars
+5. 🚫 **Other docs** - Ignore unless told otherwise
+
+**Rule:** BOT_BRIEF.md overrides all others. When unsure, ASK.
 
 ## 🎯 QUICK NAVIGATION
 

@@ -1,8 +1,26 @@
 # 🤖 BOT BRIEF - ListCart Production
 
-**Last Updated:** 2026-01-25  
+**Last Updated:** 2026-01-28  
 **Status:** Production | Deployed on Vercel  
 **Performance SLA:** < 1 second response times
+
+---
+
+## ⚠️ AGENT READING CONTRACT
+
+**YOU MUST FOLLOW THIS ORDER BEFORE TAKING ANY ACTION:**
+
+1. ✅ **Always read BOT_BRIEF.md (this file) in full**
+2. 📁 **Use BOT_MANIFEST.md ONLY to locate files or routes**
+3. 🎨 **Refer to STYLE_GUIDE.md ONLY for styling or Tailwind decisions**
+4. 🗄️ **Refer to SUPABASE_NOTES.md ONLY when database or env vars are involved**
+5. 🚫 **IGNORE the following unless explicitly instructed:**
+   - ARCHITECTURE_MAP.md
+   - CHANGE_PLAYBOOK.md
+   - AGENT_ONBOARDING_SUMMARY.md
+
+**If instructions conflict, BOT_BRIEF.md overrides all others.**  
+**If unsure, ASK before editing.**
 
 ---
 

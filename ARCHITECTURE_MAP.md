@@ -1,5 +1,7 @@
 # 🏗️ ARCHITECTURE MAP - ListCart Structure
 
+> ⚠️ **REFERENCE ONLY** - Do not read unless explicitly instructed. Read BOT_BRIEF.md first.
+
 **Purpose:** Understand how data flows through the app and how components connect.
 
 ---

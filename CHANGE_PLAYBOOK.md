@@ -1,5 +1,7 @@
 # 🎯 CHANGE PLAYBOOK - Standard Operating Procedures
 
+> ⚠️ **REFERENCE ONLY** - Do not read unless explicitly instructed. Read BOT_BRIEF.md first.
+
 **Purpose:** Step-by-step guide for making changes safely and efficiently.
 
 ---
