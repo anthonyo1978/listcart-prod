@@ -23,7 +23,8 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto px-6 text-center">
           <div className="space-y-8">
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               Stop More Juggling Vendors.
               <br />
               <span className="text-blue-200">Start Closing Deals.</span>
@@ -83,7 +84,8 @@ export default function Home() {
       <section id="features" className="py-24 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               Why Agents Love ListCart
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -109,7 +111,8 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 All Conversations in One Place
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -134,7 +137,8 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 Real-Time Collaboration
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -159,7 +163,8 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 One-Click Approvals
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -184,7 +189,8 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 Complete Audit Trail
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -209,7 +215,8 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 Save Hours Per Listing
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -234,7 +241,8 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 Your Trusted Network
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -249,7 +257,8 @@ export default function Home() {
       <section id="pricing" className="py-16 bg-yellow-500">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               💰 Monetize Every Listing
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400">
@@ -264,14 +273,16 @@ export default function Home() {
                 <svg className="w-10 h-10 mr-3" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
-                <h3 className="text-2xl font-bold">You Set Your Commission</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               </div>
               <p className="text-green-100 mb-6 text-lg">
                 Add your own markup (1%, 2%, 5%... you decide!) and earn on every service you coordinate.
               </p>
               <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 mb-6">
                 <div className="text-sm text-green-100 mb-2">Example earning:</div>
-                <div className="text-3xl font-bold mb-2">$100-$500+</div>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 <div className="text-sm text-green-100">per listing, based on your commission rate</div>
               </div>
               <ul className="space-y-3">
@@ -301,7 +312,8 @@ export default function Home() {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border-2 border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between mb-4">
                   <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Platform Fee</h4>
-                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">5%</span>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Simple, transparent fee per cart. No monthly subscription. No hidden costs.
@@ -324,7 +336,8 @@ export default function Home() {
                     <span className="font-semibold">+$50</span>
                   </div>
                   <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-2"></div>
-                  <div className="flex justify-between font-bold text-gray-900 dark:text-white">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                     <span>Vendor receives:</span>
                     <span>$1,070</span>
                   </div>
@@ -334,7 +347,8 @@ export default function Home() {
                 </div>
               </div>
 
-              <button className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all shadow-lg">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 Start Earning Today
               </button>
             </div>
@@ -344,9 +358,11 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto" style={{display: 'none'}}>
             {/* Starter Plan */}
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Starter</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <div className="mb-6">
-                <span className="text-4xl font-bold text-gray-900 dark:text-white">$0</span>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 <span className="text-gray-600 dark:text-gray-400">/month</span>
               </div>
               <ul className="space-y-3 mb-8">
@@ -379,9 +395,11 @@ export default function Home() {
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-semibold">
                 Most Popular
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Professional</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <div className="mb-6">
-                <span className="text-4xl font-bold text-white">$49</span>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                 <span className="text-blue-100">/month</span>
               </div>
               <ul className="space-y-3 mb-8">
@@ -417,9 +435,11 @@ export default function Home() {
 
             {/* Enterprise Plan */}
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Enterprise</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <div className="mb-6">
-                <span className="text-4xl font-bold text-gray-900 dark:text-white">Custom</span>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
@@ -459,7 +479,8 @@ export default function Home() {
       <section id="roadmap" className="py-24 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               Product Roadmap
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400">
@@ -473,7 +494,8 @@ export default function Home() {
               <div className="absolute left-0 top-0 transform -translate-x-[9px] w-5 h-5 rounded-full bg-green-500"></div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Q1 2026 - MVP Launch ✅</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-sm font-semibold">
                     Launched
                   </span>
@@ -492,7 +514,8 @@ export default function Home() {
               <div className="absolute left-0 top-0 transform -translate-x-[9px] w-5 h-5 rounded-full bg-yellow-500"></div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Q2 2026 - Integrations</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                   <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold">
                     In Progress
                   </span>
@@ -511,7 +534,8 @@ export default function Home() {
               <div className="absolute left-0 top-0 transform -translate-x-[9px] w-5 h-5 rounded-full bg-purple-500"></div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Q3 2026 - AI & Automation</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                   <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-semibold">
                     Planned
                   </span>
@@ -530,7 +554,8 @@ export default function Home() {
               <div className="absolute left-0 top-0 transform -translate-x-[9px] w-5 h-5 rounded-full bg-gray-300 dark:bg-gray-600"></div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Q4 2026 - Enterprise</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
                   <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-semibold">
                     Future
                   </span>
@@ -551,7 +576,8 @@ export default function Home() {
       <section id="resources" className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               Resources & Support
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400">
@@ -569,7 +595,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Documentation</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <p className="text-sm text-gray-600 dark:text-gray-400">Comprehensive guides and tutorials</p>
             </a>
 
@@ -582,7 +609,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
         </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Video Tutorials</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <p className="text-sm text-gray-600 dark:text-gray-400">Step-by-step video walkthroughs</p>
             </a>
 
@@ -595,7 +623,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Help Center</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <p className="text-sm text-gray-600 dark:text-gray-400">FAQs and troubleshooting</p>
             </a>
 
@@ -608,7 +637,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Live Support</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <p className="text-sm text-gray-600 dark:text-gray-400">Chat with our team</p>
             </a>
           </div>
@@ -619,7 +649,8 @@ export default function Home() {
       <section id="about" className="py-24 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               Built by Agents, for Agents
             </h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
@@ -629,14 +660,16 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <p className="text-blue-100">
                 To give real estate agents back their most valuable resource: time. We believe coordination shouldn't be the bottleneck in closing deals.
               </p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-white mb-4">Our Promise</h3>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <p className="text-blue-100">
                 Every feature we build is tested by working agents. We ship fast, listen closely, and never stop improving.
               </p>
@@ -657,7 +690,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="text-white font-bold mb-4">ListCart</h4>
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
               <p className="text-sm">
                 Where listing services meet simplicity.
               </p>
