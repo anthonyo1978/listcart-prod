@@ -28,7 +28,7 @@ export default function Home() {
               Stop More Juggling Vendors.
               <br />
               <span className="text-blue-200">Start Closing Deals.</span>
-            </h1>
+ </h1>
 
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto drop-shadow-lg">
