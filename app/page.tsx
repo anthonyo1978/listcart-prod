@@ -41,7 +41,7 @@ export default function Home() {
                 href="/create"
                 className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-full text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                Create Your First ListCart
+                Create
               </Link>
               <button
                 onClick={() => {
