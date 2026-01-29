@@ -172,6 +172,25 @@ Step 5: Assess risk → LOW → commit+push
 
 ═══════════════════════════════════════════════════════════
 
+TRUTH GATE (MANDATORY BEFORE COMMIT)
+
+Before ANY commit, run:
+/home/ubuntu/repos/listcart-prod/scripts/truth-gate.sh
+
+This verifies:
+- git status (what changed)
+- npm run build (compiles without errors)
+- Build proof (last 20 lines + hash)
+
+REQUIREMENTS:
+- Truth Gate MUST pass (exit 0)
+- Include proof in response (build output or hash)
+- If build fails twice: HARD STOP, report error, wait for human
+
+NO EXCEPTIONS. No proof = no commit.
+
+═══════════════════════════════════════════════════════════
+
 GIT WORKFLOW
 
 Before any edit:
@@ -180,11 +199,17 @@ git status
 git pull --rebase        # If safe
 
 After edit:
-git add [files]
-git commit -m "Type: Brief description"
-git push origin main
+1. Run Truth Gate: ./scripts/truth-gate.sh
+2. If pass: git add [files]
+3. git commit -m "Type: Brief description"
+4. git push origin feature-branch  # NEVER push main directly
 
 Commit types: UI, Style, Fix, Refactor, Perf, Docs
+
+Branch workflow:
+- Work on feature branches
+- Push branches, not main
+- pre-push hook blocks main pushes
 
 ═══════════════════════════════════════════════════════════
 
