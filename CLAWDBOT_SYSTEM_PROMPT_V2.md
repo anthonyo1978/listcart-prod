@@ -189,6 +189,17 @@ REQUIREMENTS:
 
 NO EXCEPTIONS. No proof = no commit.
 
+### Commit Failure Loop (MANDATORY)
+
+If `git commit` fails for any reason (including a Truth Gate failure):
+
+1. **Paste the Truth Gate output** (last ~60 lines, including the error and the final status).
+2. **Explain the failure** in 1–3 bullets (what command failed, why, which file/line if available).
+3. **Propose a patch** (unified diff) that addresses the exact error.
+4. **Retry** by re-running `./scripts/truth-gate.sh` and attempting the commit again.
+
+If the same failure repeats twice → **HARD STOP** and request human intervention.
+
 ═══════════════════════════════════════════════════════════
 
 GIT WORKFLOW
