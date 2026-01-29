@@ -57,7 +57,7 @@ export function Navbar() {
                   : 'text-white drop-shadow-lg'
               }`}
             >
-              ListCart
+              ListCart AI
             </span>
           </Link>
 
