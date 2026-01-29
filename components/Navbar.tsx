@@ -112,6 +112,7 @@ export function Navbar() {
               }`}
             >
               <Link href="/support" className="text-sm font-medium transition-colors hover:text-blue-500 " + (isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white drop-shadow-lg") + ">Support</Link>
+              <Link href="/support" className="text-sm font-medium transition-colors hover:text-blue-500 " + (isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white drop-shadow-lg") + ">Support</Link>
               About Us
             </button>
           </div>
