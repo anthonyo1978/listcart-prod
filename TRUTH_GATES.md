@@ -70,6 +70,30 @@ SHA256: a3f2b9c8d1e4f5a6b7c8d9e0f1a2b3c4...
 
 ---
 
+## Temporal Truth Rule (MANDATORY)
+
+**Each build/run is a distinct event.**
+
+The agent may **only report "PASS"** if the **most recent** Truth Gate run passed.
+
+**If a prior attempt failed:**
+1. State it failed explicitly
+2. Include the relevant log excerpt
+3. Explain what changed before the successful retry
+
+**Forbidden language:**
+- ❌ "lock issue but pass"
+- ❌ "had errors but compiled"
+- ❌ "issues resolved, now passes"
+
+**Required language:**
+- ✅ "Run 1 failed due to lock; Run 2 passed after clearing .next/"
+- ✅ "First attempt: build error on line 42; Second attempt: PASS after fixing JSX"
+
+**Each run must be reported with its timestamp** from the Truth Gate output.
+
+---
+
 ## Hard Stop Protocol
 
 **If the same build fails twice:**

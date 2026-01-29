@@ -2,6 +2,7 @@
 set -euo pipefail
 
 echo "=== TRUTH GATE ==="
+echo "Time: $(date -Is)"
 echo "Repo: $(git rev-parse --show-toplevel)"
 echo "Branch: $(git rev-parse --abbrev-ref HEAD)"
 echo
@@ -23,5 +24,5 @@ echo
 echo "=== BUILD LOG HASH ==="
 sha256sum "$LOG" || true
 
-echo "=== TRUTH GATE PASS ==="
+echo "=== TRUTH GATE PASS @ $(date -Is) ==="
 

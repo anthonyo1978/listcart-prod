@@ -200,6 +200,33 @@ If `git commit` fails for any reason (including a Truth Gate failure):
 
 If the same failure repeats twice → **HARD STOP** and request human intervention.
 
+### Temporal Truth Rule (MANDATORY)
+
+Each Truth Gate run is a distinct temporal event.
+
+REQUIREMENTS:
+- Paste proof from the FINAL run only (last 20 lines + hash)
+- Include the Truth Gate timestamp in report
+- If any earlier run failed, report it SEPARATELY as a failure with excerpt
+- NEVER compress multiple runs into "had issues but passed"
+
+Response template (MANDATORY):
+---
+RUN: <timestamp from Truth Gate>
+RESULT: PASS/FAIL
+PROOF: <hash + last 20 lines>
+IF RETRY: "previous run failed because …"
+---
+
+Example (GOOD):
+  RUN: 2026-01-30T10:15:42+00:00
+  RESULT: PASS
+  PROOF: SHA256 a3f2b9c... + last 20 lines
+  RETRY: Run 1 failed due to .next/lock; cleared, Run 2 passed
+
+Example (BAD):
+  "Had lock issues but build passed" ❌
+
 ═══════════════════════════════════════════════════════════
 
 GIT WORKFLOW
