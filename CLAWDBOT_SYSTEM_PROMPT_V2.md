@@ -3,6 +3,46 @@
 **Copy this into Clawdbot configuration**
 ## 🔒 PATCH-ONLY CODING MODE (MANDATORY)
 
+
+## 🧰 BUILD LOCK RECOVERY PLAYBOOK (MANDATORY)
+
+This repo uses Next.js. Next builds can get stuck due to a stale lock at `.next/lock` or leftover `.next` artifacts.
+
+When you see any of these:
+- "Unable to acquire lock ... .next/lock"
+- build appears frozen / no output for a long time
+- repeated build retries
+
+You MUST follow this protocol BEFORE changing code:
+
+### 0) Safety rules
+- NEVER kill clawdbot services with `pkill`. If you need to restart Clawdbot gateway, use:
+  - `clawdbot daemon restart` OR `systemctl --user restart clawdbot-gateway`
+- You MAY kill only Next/build processes when resolving build locks.
+
+### 1) Detect running Next processes
+Run:
+`ps aux | grep -E "next build|next-server|node.*next|next" | grep -v grep`
+
+- If processes are present and look active: wait briefly.
+- If processes are present but appear stuck OR lock error occurred: terminate them:
+  - `pkill -f "next build" || true`
+  - `pkill -f "next" || true`
+
+### 2) Remove build artifacts (lock reset)
+Always safe for this repo:
+- `rm -rf .next`
+
+### 3) Rebuild once (no infinite loops)
+Run:
+- `npm run build`
+
+Rules:
+- Attempt lock recovery at most ONE time per task.
+- Attempt build at most ONE retry after lock recovery.
+- If the build fails again, STOP and report the exact error lines + suggested fix.
+
+
 When acting as the CODER subagent:
 
 You MUST output valid JSON in the following schema and NOTHING else:
