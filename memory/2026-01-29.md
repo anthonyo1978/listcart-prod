@@ -1,0 +1,3 @@
+- Updated H1 title on landing page to 'Try Again'.
+- Created a Support page and added it to the Navbar.
+- Current branch is 'update-header'; not on main yet.
