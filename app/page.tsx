@@ -22,7 +22,7 @@ export default function Home() {
           <div className="space-y-8">
             {/* Main Headline */}
             <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl">
-              Anthony was here.
+              No More Tokens.
               <br />
               <span className="text-blue-200">Start Closing Deals.</span>
             </h1>
