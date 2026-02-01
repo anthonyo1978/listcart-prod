@@ -32,4 +32,16 @@ fi
 
 bash -lc "$AI_AGENT_CMD"
 
+# ===== YOLO MERGE MODE =====
+echo "YOLO: merging $BRANCH -> main" | tee -a "$RUN_DIR/summary.md"
+
+git status --porcelain >/dev/null || true
+
+git checkout main
+git reset --hard origin/main
+
+git merge --no-ff "$BRANCH" -m "Merge $BRANCH ($TID)"
+git push origin main
+
+echo "YOLO: merged and pushed to main" | tee -a "$RUN_DIR/summary.md"
 
