@@ -232,3 +232,5 @@ MIT
 ---
 
 Built with ❤️ using Next.js and Prisma
+
+AI DevBox: enabled
