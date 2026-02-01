@@ -20,9 +20,16 @@ git checkout main >/dev/null 2>&1 || true
 git reset --hard origin/main
 
 BRANCH="ai/${TID,,}"
-git checkout -b "$BRANCH"
+git checkout -B "$BRANCH"
 
-# ===== AGENT INVOCATION (placeholder) =====
-echo "Agent not configured. Set AI_AGENT_CMD." | tee "$RUN_DIR/summary.md"
-exit 10
+# ===== AGENT INVOCATION =====
+source /home/aidev/.aidev_env
+
+if [ -z "${AI_AGENT_CMD:-}" ]; then
+  echo "Agent not configured. Set AI_AGENT_CMD." | tee "$RUN_DIR/summary.md"
+  exit 10
+fi
+
+bash -lc "$AI_AGENT_CMD"
+
 
