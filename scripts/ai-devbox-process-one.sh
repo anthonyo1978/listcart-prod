@@ -30,7 +30,6 @@ if [ -z "${AI_AGENT_CMD:-}" ]; then
   exit 10
 fi
 
-bash -lc "$AI_AGENT_CMD"
 
 # ===== YOLO MERGE MODE =====
 echo "YOLO: merging $BRANCH -> main" | tee -a "$RUN_DIR/summary.md"
