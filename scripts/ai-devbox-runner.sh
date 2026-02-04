@@ -3,7 +3,7 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 STATE_DIR="$REPO_DIR/.ai-devbox"
-PROCESSED="$STATE_DIR/processed.json"
+PROCESSED="/home/aidev/.ai-devbox/processed.json"
 
 mkdir -p "$STATE_DIR/runs"
 cd "$REPO_DIR"
