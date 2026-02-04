@@ -7,6 +7,23 @@ import { CartSearchBox } from '@/components/CartSearchBox'
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
+      {/* Animations for floating cart icons */}
+      <style>{`
+        @keyframes float-right {
+          0% { transform: translateX(-10%) translateY(0); }
+          50% { transform: translateX(110%) translateY(-20px); }
+          100% { transform: translateX(-10%) translateY(0); }
+        }
+        @keyframes float-left {
+          0% { transform: translateX(110%) translateY(0); }
+          50% { transform: translateX(-10%) translateY(-15px); }
+          100% { transform: translateX(110%) translateY(0); }
+        }
+        @keyframes bob {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+      `}</style>
       <Navbar />
 
       {/* Hero Section */}
@@ -56,6 +73,22 @@ export default function Home() {
               <p className="text-blue-100 text-sm mb-3">Or access an existing ListCart:</p>
               <CartSearchBox />
             </div>
+          </div>
+        </div>
+
+        {/* Floating cart icons in hero */}
+        <div className="absolute bottom-24 left-0 right-0 overflow-hidden pointer-events-none opacity-20">
+          <div style={{ animation: 'float-right 18s ease-in-out infinite' }}>
+            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
+            </svg>
+          </div>
+        </div>
+        <div className="absolute bottom-36 left-0 right-0 overflow-hidden pointer-events-none opacity-15">
+          <div style={{ animation: 'float-left 22s ease-in-out infinite' }}>
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
+            </svg>
           </div>
         </div>
 
@@ -242,6 +275,32 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Animated cart divider */}
+      <div className="relative bg-gray-50 dark:bg-gray-800 overflow-hidden h-16">
+        <div className="absolute inset-0 flex items-center justify-center gap-32 opacity-10 dark:opacity-20 pointer-events-none">
+          {/* Person pushing cart - left */}
+          <div style={{ animation: 'bob 3s ease-in-out infinite' }}>
+            <svg className="w-10 h-10 text-indigo-600 dark:text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
+              <circle cx="8" cy="4" r="2" />
+              <path d="M11 6H6l-1 6h4l1 4h2l-1-4 2-4H11zM16 10h-2l-.5 2H16l1 4h2l-1-4h2l-1-2h-3z" />
+            </svg>
+          </div>
+          {/* Cart icon - center */}
+          <div style={{ animation: 'bob 4s ease-in-out infinite 1s' }}>
+            <svg className="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
+            </svg>
+          </div>
+          {/* Person pushing cart - right */}
+          <div style={{ animation: 'bob 3.5s ease-in-out infinite 0.5s' }}>
+            <svg className="w-10 h-10 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+              <circle cx="8" cy="4" r="2" />
+              <path d="M11 6H6l-1 6h4l1 4h2l-1-4 2-4H11zM16 10h-2l-.5 2H16l1 4h2l-1-4h2l-1-2h-3z" />
+            </svg>
+          </div>
+        </div>
+      </div>
 
       {/* Pricing Section */}
       <section id="pricing" className="py-16 bg-yellow-500">
@@ -453,6 +512,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Animated cart divider */}
+      <div className="relative bg-white dark:bg-gray-900 overflow-hidden h-16">
+        <div className="absolute left-0 right-0 top-0 bottom-0 flex items-center pointer-events-none">
+          <div className="w-full" style={{ animation: 'float-right 15s ease-in-out infinite' }}>
+            <svg className="w-8 h-8 text-indigo-400/30" fill="currentColor" viewBox="0 0 24 24">
+              <circle cx="7" cy="4" r="2" />
+              <path d="M10 6H5l-1 6h4l1 4h2l-1-4 2-4H10zM15 10h-2l-.5 2H15l1 4h2l-1-4h2l-1-2h-3z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
       {/* Roadmap Section */}
       <section id="roadmap" className="py-24 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-6">
@@ -612,6 +683,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Animated cart divider */}
+      <div className="relative bg-white dark:bg-gray-900 overflow-hidden h-16">
+        <div className="absolute left-0 right-0 top-0 bottom-0 flex items-center pointer-events-none">
+          <div className="w-full" style={{ animation: 'float-left 20s ease-in-out infinite' }}>
+            <svg className="w-8 h-8 text-purple-400/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
+            </svg>
+          </div>
+        </div>
+      </div>
 
       {/* About Us Section */}
       <section id="about" className="py-24 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700">
