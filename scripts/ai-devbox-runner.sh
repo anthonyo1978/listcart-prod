@@ -31,10 +31,33 @@ for ticket in tickets/*.md; do
     fi
 
     echo "Found ready ticket: $TID ($ticket)"
-    scripts/ai-devbox-process-one.sh "$ticket" "$TID"
+    echo "[runner] processing $TID"
 
-    tmp="$(mktemp)"
-    jq --arg id "$TID" --arg ts "$(date -u +%FT%TZ)" '. + {($id): $ts}' "$PROCESSED" > "$tmp"
-    mv "$tmp" "$PROCESSED"
+
+        set +e
+        scripts/ai-devbox-process-one.sh "$ticket" "$TID"
+        rc=$?
+        set -e
+
+        # Treat certain exit codes as "processed but needs human"
+        # (Pick the codes you use: 30 was your old "refusing to merge", add others if you have them)
+        status=""
+        ts="$(date -u +%FT%TZ)"
+
+        if [ $rc -eq 0 ]; then
+          status="$ts"
+        elif [ $rc -eq 30 ]; then
+          status="needs-review:$ts"
+        else
+          echo "Ticket $TID failed with exit code $rc; leaving unprocessed." >&2
+          exit $rc
+        fi
+
+        tmp="$(mktemp)"
+        jq --arg id "$TID" --arg status "$status" '. + {($id): $status}' "$PROCESSED" > "$tmp"
+        mv "$tmp" "$PROCESSED"
+
+        echo "[runner] marked $TID as $status"
+
   fi
 done
