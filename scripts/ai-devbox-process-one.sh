@@ -30,6 +30,21 @@ if [ -z "${AI_AGENT_CMD:-}" ]; then
   exit 10
 fi
 
+bash -lc "$AI_AGENT_CMD" | tee -a "$RUN_DIR/agent.log"
+
+# Refuse to continue if the agent made no changes
+if git diff --quiet && git diff --cached --quiet; then
+  echo "Agent made no changes; refusing to merge." | tee -a "$RUN_DIR/summary.md"
+  exit 30
+fi
+
+# If agent staged but didn't commit, commit now
+if git diff --cached --quiet; then
+  echo "Agent did not stage changes; refusing to merge." | tee -a "$RUN_DIR/summary.md"
+  exit 31
+fi
+
+git commit -m "feat: implement ${TID} (AI DevBox)" || true
 
 # ===== YOLO MERGE MODE =====
 echo "YOLO: merging $BRANCH -> main" | tee -a "$RUN_DIR/summary.md"
