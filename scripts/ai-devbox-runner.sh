@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# ===== HARD RESET TO BASELINE (prevents branch-stall) =====
+git fetch origin
+git checkout -f main
+git reset --hard origin/main
+
+
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 # ===== PREFLIGHT ASSERTS =====
 if [ -n "$(git status --porcelain)" ]; then
