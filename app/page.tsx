@@ -3,6 +3,97 @@
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CartSearchBox } from '@/components/CartSearchBox'
+import { useState, useEffect } from 'react'
+
+const HERO_TEXT = 'Automate and monetise the listing process'
+const FLIP_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+
+function FlipHero() {
+  const [displayChars, setDisplayChars] = useState<string[]>(() =>
+    Array.from(HERO_TEXT, (ch) =>
+      ch === ' ' ? ' ' : FLIP_CHARS[Math.floor(Math.random() * FLIP_CHARS.length)]
+    )
+  )
+  const [settled, setSettled] = useState<boolean[]>(() =>
+    Array.from(HERO_TEXT, () => false)
+  )
+
+  useEffect(() => {
+    const totalLetters = HERO_TEXT.replace(/ /g, '').length
+    const perLetterDelay = 40
+    const flipsPerChar = 6
+    const flipInterval = 50
+
+    let letterIndex = 0
+    const timeouts: ReturnType<typeof setTimeout>[] = []
+
+    for (let i = 0; i < HERO_TEXT.length; i++) {
+      if (HERO_TEXT[i] === ' ') continue
+      const delay = letterIndex * perLetterDelay
+      const charIdx = i
+
+      for (let f = 0; f < flipsPerChar; f++) {
+        timeouts.push(
+          setTimeout(() => {
+            setDisplayChars((prev) => {
+              const next = [...prev]
+              next[charIdx] =
+                FLIP_CHARS[Math.floor(Math.random() * FLIP_CHARS.length)]
+              return next
+            })
+          }, delay + f * flipInterval)
+        )
+      }
+
+      timeouts.push(
+        setTimeout(() => {
+          setDisplayChars((prev) => {
+            const next = [...prev]
+            next[charIdx] = HERO_TEXT[charIdx]
+            return next
+          })
+          setSettled((prev) => {
+            const next = [...prev]
+            next[charIdx] = true
+            return next
+          })
+        }, delay + flipsPerChar * flipInterval)
+      )
+
+      letterIndex++
+    }
+
+    const totalDuration =
+      (totalLetters - 1) * perLetterDelay + flipsPerChar * flipInterval
+    timeouts.push(
+      setTimeout(() => {
+        setDisplayChars(Array.from(HERO_TEXT))
+        setSettled(Array.from(HERO_TEXT, () => true))
+      }, totalDuration + 100)
+    )
+
+    return () => timeouts.forEach(clearTimeout)
+  }, [])
+
+  return (
+    <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl inline-block">
+      {displayChars.map((ch, i) => (
+        <span
+          key={i}
+          className={
+            ch === ' '
+              ? 'inline-block w-[0.3em]'
+              : `inline-block transition-transform duration-75 ${
+                  settled[i] ? '' : 'flip-tick'
+                }`
+          }
+        >
+          {ch === ' ' ? '\u00A0' : ch}
+        </span>
+      ))}
+    </h1>
+  )
+}
 
 export default function Home() {
   return (
@@ -23,6 +114,14 @@ export default function Home() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-8px); }
         }
+        @keyframes flip-tick {
+          0% { transform: rotateX(0deg); }
+          50% { transform: rotateX(90deg); }
+          100% { transform: rotateX(0deg); }
+        }
+        .flip-tick {
+          animation: flip-tick 0.1s ease-in-out;
+        }
       `}</style>
       <Navbar />
 
@@ -38,11 +137,7 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto px-6 text-center">
           <div className="space-y-8">
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl">
-              Test 123.
-              <br />
-              <span className="text-blue-200">Start Closing Deals.</span>
-            </h1>
+            <FlipHero />
 
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto drop-shadow-lg">
