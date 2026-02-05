@@ -2,6 +2,13 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+# ===== PREFLIGHT ASSERTS =====
+if [ -n "$(git status --porcelain)" ]; then
+  echo "Preflight failed: working tree is dirty. Commit/stash changes first." >&2
+  git status --porcelain >&2
+  exit 21
+fi
+
 STATE_DIR="$REPO_DIR/.ai-devbox"
 PROCESSED="/home/aidev/.ai-devbox/processed.json"
 
