@@ -205,6 +205,96 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Vendor Chaos Section – the coordination whirlwind ListCart tames */}
+      <section className="py-20 bg-white dark:bg-gray-900 overflow-hidden">
+        <style>{`
+          @keyframes orbit {
+            from { transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg); }
+            to   { transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg); }
+          }
+          @keyframes orbit-reverse {
+            from { transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg); }
+            to   { transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg); }
+          }
+          @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 0.15; }
+            50%      { transform: scale(1.08); opacity: 0.25; }
+          }
+        `}</style>
+
+        <div className="max-w-4xl mx-auto px-6 text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+            One Listing. Dozens of Moving Parts.
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Photographers, cleaners, painters, gardeners, signboard installers, stylists&mdash;every listing is a whirlwind of coordination. ListCart brings order to the chaos.
+          </p>
+        </div>
+
+        {/* Orbit ring with vendor icons */}
+        <div className="relative mx-auto w-72 h-72 md:w-[26rem] md:h-[26rem]">
+          {/* Decorative rings */}
+          <div className="absolute inset-0 rounded-full border-2 border-dashed border-indigo-200 dark:border-indigo-800" style={{ animation: 'pulse-ring 4s ease-in-out infinite' }} />
+          <div className="absolute inset-6 rounded-full border border-indigo-100 dark:border-indigo-900" />
+
+          {/* Centre house icon */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-xl">
+              <svg className="w-10 h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1m-2 0h2" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Orbiting vendor icons – outer ring (clockwise) */}
+          {[
+            { label: 'Photographer', delay: '0s', color: 'from-amber-400 to-orange-500', path: 'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z' },
+            { label: 'Cleaner', delay: '-3s', color: 'from-cyan-400 to-teal-500', path: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
+            { label: 'Painter', delay: '-6s', color: 'from-pink-400 to-rose-500', path: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01' },
+            { label: 'Signboard', delay: '-9s', color: 'from-emerald-400 to-green-500', path: 'M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9' },
+            { label: 'Repairs', delay: '-12s', color: 'from-violet-400 to-purple-500', path: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+            { label: 'Gardener', delay: '-15s', color: 'from-lime-400 to-green-500', path: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25' },
+          ].map((v, i) => (
+            <div
+              key={v.label}
+              className="absolute inset-0 flex items-center justify-center"
+              style={{ '--orbit-r': '8rem', animation: `orbit 18s linear infinite`, animationDelay: v.delay } as React.CSSProperties}
+            >
+              <div className="group relative">
+                <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br ${v.color} flex items-center justify-center shadow-lg`}>
+                  <svg className="w-6 h-6 md:w-7 md:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={v.path} />
+                  </svg>
+                </div>
+                <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">{v.label}</span>
+              </div>
+            </div>
+          ))}
+
+          {/* Inner counter-rotating ring with remaining vendors */}
+          {[
+            { label: 'Stylist', delay: '0s', color: 'from-fuchsia-400 to-pink-500', path: 'M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42' },
+            { label: 'Copywriter', delay: '-4s', color: 'from-sky-400 to-blue-500', path: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
+            { label: 'Decorator', delay: '-8s', color: 'from-yellow-400 to-amber-500', path: 'M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125V11l4.523-4.523a3.75 3.75 0 015.304 5.304L13.927 18.18' },
+          ].map((v) => (
+            <div
+              key={v.label}
+              className="absolute inset-0 flex items-center justify-center"
+              style={{ '--orbit-r': '5rem', animation: `orbit-reverse 14s linear infinite`, animationDelay: v.delay } as React.CSSProperties}
+            >
+              <div className="group relative">
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br ${v.color} flex items-center justify-center shadow-md`}>
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={v.path} />
+                  </svg>
+                </div>
+                <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">{v.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Features Section */}
       <section id="features" className="py-24 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-6">
