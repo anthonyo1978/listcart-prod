@@ -32,11 +32,14 @@ fi
 
 bash -lc "$AI_AGENT_CMD" | tee -a "$RUN_DIR/agent.log"
 
-# Refuse to continue if the agent made no changes
-if git diff --quiet && git diff --cached --quiet; then
-  echo "Agent made no changes; refusing to merge." | tee -a "$RUN_DIR/summary.md"
-  exit 30
+# Refuse only if there are no commits on this branch
+if [ "$(git rev-list --count main..HEAD)" -eq 0 ]; then
+  echo "Agent produced no commits; nothing to merge." | tee -a "$RUN_DIR/summary.md"
+  exit 0
 fi
+
+echo "Agent produced commits; proceeding with auto-merge." | tee -a "$RUN_DIR/summary.md"
+
 
 # If agent staged but didn't commit, commit now
 if git diff --cached --quiet; then
