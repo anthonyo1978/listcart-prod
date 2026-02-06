@@ -19,6 +19,9 @@ fi
 STATE_DIR="$REPO_DIR/.ai-devbox"
 PROCESSED="/home/aidev/.ai-devbox/processed.json"
 QUEUE="/home/aidev/.ai-devbox/queue.json"
+INBOX_DIR="/home/aidev/.ai-devbox/inbox"
+INBOX_DONE="/home/aidev/.ai-devbox/inbox_done"
+
 
 mkdir -p "$STATE_DIR/runs"
 
@@ -33,6 +36,47 @@ fi
 if [ ! -f "$QUEUE" ]; then
   echo '{"queue":[]}' > "$QUEUE"
 fi
+
+# ===== INBOX -> QUEUE (external enqueue mechanism) =====
+mkdir -p "$INBOX_DIR" "$INBOX_DONE"
+
+enqueue_ticket() {
+  local tid="$1"
+  local tmp
+  tmp="$(mktemp)"
+
+  # Skip if already processed
+  if jq -e --arg id "$tid" '.[$id] != null' "$PROCESSED" >/dev/null; then
+    echo "[inbox] $tid already processed; not enqueuing"
+    return 0
+  fi
+
+  # Skip if already queued
+  if jq -e --arg id "$tid" '.queue | index($id) != null' "$QUEUE" >/dev/null; then
+    echo "[inbox] $tid already in queue; not enqueuing"
+    return 0
+  fi
+
+  jq --arg id "$tid" '.queue += [$id]' "$QUEUE" > "$tmp"
+  mv "$tmp" "$QUEUE"
+  echo "[inbox] enqueued $tid"
+}
+
+# Drain inbox files (each file should contain JSON like: {"ticket_id":"TICKET-0012"})
+shopt -s nullglob
+for f in "$INBOX_DIR"/*.json; do
+  tid="$(jq -r '.ticket_id // empty' "$f" 2>/dev/null || true)"
+  if [ -z "${tid:-}" ]; then
+    echo "[inbox] invalid file (missing ticket_id): $f" >&2
+    mv "$f" "$INBOX_DONE/$(basename "$f").bad.$(date -u +%s)" || true
+    continue
+  fi
+
+  enqueue_ticket "$tid"
+  mv "$f" "$INBOX_DONE/$(basename "$f").done.$(date -u +%s)" || true
+done
+shopt -u nullglob
+
 
 pick_queued_ticket() {
   jq -r '.queue[0] // empty' "$QUEUE"
