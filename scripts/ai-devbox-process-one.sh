@@ -41,13 +41,28 @@ fi
 echo "Agent produced commits; proceeding with auto-merge." | tee -a "$RUN_DIR/summary.md"
 
 
-# If agent staged but didn't commit, commit now
-if git diff --cached --quiet; then
-  echo "Agent did not stage changes; refusing to merge." | tee -a "$RUN_DIR/summary.md"
-  exit 31
+# Determine whether the agent produced commits or working-tree changes
+
+# How many commits ahead of origin/main are we?
+ahead_count="$(git rev-list --count origin/main..HEAD 2>/dev/null || echo 0)"
+
+if [ "${ahead_count}" -gt 0 ]; then
+  echo "Agent produced ${ahead_count} commit(s); proceeding to auto-merge." | tee -a "$RUN_DIR/summary.md"
+else
+  # No commits ahead — maybe the agent left changes uncommitted.
+  if ! git diff --quiet; then
+    echo "Agent left uncommitted changes; committing them now." | tee -a "$RUN_DIR/summary.md"
+    git add -A
+    git commit -m "feat: implement ${TID} (AI DevBox)" || true
+    ahead_count="$(git rev-list --count origin/main..HEAD 2>/dev/null || echo 0)"
+  fi
+
+  if [ "${ahead_count}" -eq 0 ]; then
+    echo "Agent produced no commits or changes; refusing to merge." | tee -a "$RUN_DIR/summary.md"
+    exit 31
+  fi
 fi
 
-git commit -m "feat: implement ${TID} (AI DevBox)" || true
 
 # ===== YOLO MERGE MODE =====
 echo "YOLO: merging $BRANCH -> main" | tee -a "$RUN_DIR/summary.md"
