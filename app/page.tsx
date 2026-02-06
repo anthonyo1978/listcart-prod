@@ -490,6 +490,38 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="pricing" className="py-16 bg-yellow-500">
         <div className="max-w-5xl mx-auto px-6">
+          {/* Limited Time Promo Banner */}
+          <div className="mb-10 relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-2xl blur opacity-75 animate-pulse"></div>
+            <div className="relative bg-gradient-to-r from-red-600 via-pink-600 to-orange-500 rounded-2xl p-6 shadow-2xl border-4 border-white/30">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="text-5xl md:text-6xl animate-bounce">🔥</div>
+                  <div className="text-center md:text-left">
+                    <div className="text-white font-black text-2xl md:text-3xl tracking-tight">
+                      20% OFF YEARLY PLANS
+                    </div>
+                    <div className="text-yellow-200 font-semibold text-lg">
+                      Sign up by next week - Don't miss out!
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 border-2 border-white/40">
+                    <div className="text-white/80 text-xs uppercase tracking-widest">Limited Time</div>
+                    <div className="text-white font-bold text-xl">ENDS SOON</div>
+                  </div>
+                  <Link
+                    href="/create"
+                    className="px-6 py-3 bg-white text-red-600 font-bold rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 animate-pulse"
+                  >
+                    Claim Offer Now
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
               💰 Monetize Every Listing
