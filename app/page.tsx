@@ -790,10 +790,9 @@ export default function Home() {
                   </span>
                 </div>
                 <ul className="text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>• Multi-agency workflows</li>
-                  <li>• Advanced analytics & reporting</li>
-                  <li>• White-label options</li>
-                  <li>• API for custom integrations</li>
+                  <li>• Agentic phone call follow up</li>
+                  <li>• Job bidding windows</li>
+                  <li>• Service provider broker within broker idea</li>
                 </ul>
               </div>
             </div>
