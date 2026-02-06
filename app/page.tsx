@@ -780,7 +780,7 @@ export default function Home() {
             </div>
 
             {/* Roadmap Item 4 */}
-            <div className="relative pl-8 border-l-4 border-gray-300 dark:border-gray-600">
+            <div className="relative pl-8 pb-12 border-l-4 border-gray-300 dark:border-gray-600">
               <div className="absolute left-0 top-0 transform -translate-x-[9px] w-5 h-5 rounded-full bg-gray-300 dark:bg-gray-600"></div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
                 <div className="flex items-center justify-between mb-2">
@@ -794,6 +794,55 @@ export default function Home() {
                   <li>• Job bidding windows</li>
                   <li>• Service provider broker within broker idea</li>
                 </ul>
+              </div>
+            </div>
+
+            {/* Top 5 Customer Ideas */}
+            <div className="relative pl-8 border-l-4 border-gradient-to-b from-yellow-400 to-orange-500">
+              <div className="absolute left-0 top-0 transform -translate-x-[9px] w-5 h-5 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 animate-pulse"></div>
+              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-gray-800 dark:to-gray-900 p-6 rounded-lg shadow-lg border-2 border-yellow-200 dark:border-yellow-800">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                    <span className="text-2xl">💡</span> Top 5 Customer Ideas
+                  </h3>
+                  <span className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full text-sm font-semibold animate-pulse">
+                    Community Picks
+                  </span>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Your ideas, our priority. Click to vote!</p>
+                <div className="space-y-3">
+                  {[
+                    { rank: 1, idea: 'Seasonal landing pages', icon: '🎄', votes: 342 },
+                    { rank: 2, idea: 'Payment reminders & nudges', icon: '💸', votes: 287 },
+                    { rank: 3, idea: 'Auto mail branding agent', icon: '✉️', votes: 251 },
+                    { rank: 4, idea: 'Cart sounds', icon: '🔔', votes: 198 },
+                    { rank: 5, idea: 'Light bulbs (smart notifications)', icon: '💡', votes: 156 },
+                  ].map((item) => (
+                    <div
+                      key={item.rank}
+                      className="group flex items-center gap-3 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer border border-transparent hover:border-yellow-300 dark:hover:border-yellow-600"
+                    >
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white ${
+                        item.rank === 1 ? 'bg-gradient-to-r from-yellow-400 to-yellow-500' :
+                        item.rank === 2 ? 'bg-gradient-to-r from-gray-300 to-gray-400' :
+                        item.rank === 3 ? 'bg-gradient-to-r from-orange-400 to-orange-500' :
+                        'bg-gradient-to-r from-blue-400 to-blue-500'
+                      }`}>
+                        {item.rank}
+                      </div>
+                      <span className="text-xl">{item.icon}</span>
+                      <span className="flex-1 font-medium text-gray-900 dark:text-white group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
+                        {item.idea}
+                      </span>
+                      <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 group-hover:text-yellow-600 dark:group-hover:text-yellow-400">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                        </svg>
+                        <span>{item.votes}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
