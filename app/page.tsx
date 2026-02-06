@@ -965,6 +965,169 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Carousel */}
+      <section id="testimonials" className="py-24 bg-gray-50 dark:bg-gray-800 overflow-hidden">
+        <style>{`
+          @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              What People Are Saying
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400">
+              Real testimonials from definitely real people*
+            </p>
+          </div>
+
+          <div className="relative">
+            <div
+              className="flex gap-6"
+              style={{
+                animation: 'scroll-left 30s linear infinite',
+                width: 'max-content'
+              }}
+            >
+              {[
+                {
+                  name: 'Barry "Big Bucks" Henderson',
+                  role: 'Real Estate Agent, Gold Coast',
+                  quote: "Before ListCart, I was 5'6\". Now I'm 6'2\". Coincidence? I think not. Also made $400k last quarter.",
+                  avatar: 'BH'
+                },
+                {
+                  name: 'Denise McPhotographer',
+                  role: 'Property Photographer',
+                  quote: "I used to spend 3 hours a day on emails. Now I spend that time counting my money and learning salsa dancing. I've won two trophies.",
+                  avatar: 'DM'
+                },
+                {
+                  name: 'Trevor the Painter',
+                  role: 'Premium Painting Services',
+                  quote: "My wife left me because I was always stressed about coordinating jobs. She came back after I started using ListCart. We renewed our vows in Bali.",
+                  avatar: 'TP'
+                },
+                {
+                  name: 'Sandra Luxington III',
+                  role: 'Luxury Property Specialist',
+                  quote: "ListCart didn't just save my business, it saved my hairline. My dermatologist is baffled. Hair is growing back thicker than ever.",
+                  avatar: 'SL'
+                },
+                {
+                  name: 'Keith "The Dream" Sellers',
+                  role: 'Independent Agent',
+                  quote: "I showed ListCart to my dog and now he's a licensed real estate agent. He closed three deals last month. Good boy, Biscuit.",
+                  avatar: 'KS'
+                },
+                {
+                  name: 'Megan Cleansworth',
+                  role: 'Elite Cleaning Co.',
+                  quote: "Used to get jobs through carrier pigeons. Now I use ListCart. The pigeons work for me now as quality inspectors.",
+                  avatar: 'MC'
+                },
+                {
+                  name: 'Bruce "Signboard" Williams',
+                  role: 'Signboard Installation Pro',
+                  quote: "I was going to retire, but ListCart made my job so easy I'm working until I'm 150. Doctor says it's possible now.",
+                  avatar: 'BW'
+                },
+                {
+                  name: 'Fiona Gardenia',
+                  role: 'Garden Styling Expert',
+                  quote: "Since using ListCart, my plants have started growing twice as fast. Unrelated? My accountant says otherwise.",
+                  avatar: 'FG'
+                },
+                // Duplicate for seamless loop
+                {
+                  name: 'Barry "Big Bucks" Henderson',
+                  role: 'Real Estate Agent, Gold Coast',
+                  quote: "Before ListCart, I was 5'6\". Now I'm 6'2\". Coincidence? I think not. Also made $400k last quarter.",
+                  avatar: 'BH'
+                },
+                {
+                  name: 'Denise McPhotographer',
+                  role: 'Property Photographer',
+                  quote: "I used to spend 3 hours a day on emails. Now I spend that time counting my money and learning salsa dancing. I've won two trophies.",
+                  avatar: 'DM'
+                },
+                {
+                  name: 'Trevor the Painter',
+                  role: 'Premium Painting Services',
+                  quote: "My wife left me because I was always stressed about coordinating jobs. She came back after I started using ListCart. We renewed our vows in Bali.",
+                  avatar: 'TP'
+                },
+                {
+                  name: 'Sandra Luxington III',
+                  role: 'Luxury Property Specialist',
+                  quote: "ListCart didn't just save my business, it saved my hairline. My dermatologist is baffled. Hair is growing back thicker than ever.",
+                  avatar: 'SL'
+                },
+                {
+                  name: 'Keith "The Dream" Sellers',
+                  role: 'Independent Agent',
+                  quote: "I showed ListCart to my dog and now he's a licensed real estate agent. He closed three deals last month. Good boy, Biscuit.",
+                  avatar: 'KS'
+                },
+                {
+                  name: 'Megan Cleansworth',
+                  role: 'Elite Cleaning Co.',
+                  quote: "Used to get jobs through carrier pigeons. Now I use ListCart. The pigeons work for me now as quality inspectors.",
+                  avatar: 'MC'
+                },
+                {
+                  name: 'Bruce "Signboard" Williams',
+                  role: 'Signboard Installation Pro',
+                  quote: "I was going to retire, but ListCart made my job so easy I'm working until I'm 150. Doctor says it's possible now.",
+                  avatar: 'BW'
+                },
+                {
+                  name: 'Fiona Gardenia',
+                  role: 'Garden Styling Expert',
+                  quote: "Since using ListCart, my plants have started growing twice as fast. Unrelated? My accountant says otherwise.",
+                  avatar: 'FG'
+                },
+              ].map((testimonial, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 w-80 bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                      {testimonial.avatar}
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-900 dark:text-white text-sm">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">
+                        {testimonial.role}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm italic">
+                    "{testimonial.quote}"
+                  </p>
+                  <div className="mt-4 flex text-yellow-400">
+                    {[...Array(5)].map((_, j) => (
+                      <svg key={j} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-8">
+            *Results may vary. Height increases not clinically verified. No pigeons were harmed. Biscuit is a very good boy.
+          </p>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="max-w-7xl mx-auto px-6">
