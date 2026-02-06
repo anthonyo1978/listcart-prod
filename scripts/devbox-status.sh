@@ -20,7 +20,6 @@ file_exists() { [ -f "$1" ]; }
 dir_exists() { [ -d "$1" ]; }
 
 json_ok() {
-  # Validate JSON file quietly
   local file="$1"
   jq -e . "$file" >/dev/null 2>&1
 }
@@ -42,7 +41,6 @@ if file_exists "$QUEUE"; then
   if json_ok "$QUEUE"; then
     queue_len="$(safe_jq '.queue | length // 0' "$QUEUE")"
     queue_head="$(safe_jq '.queue[0] // empty' "$QUEUE")"
-    # In case .queue isn't an array
     if ! [[ "$queue_len" =~ ^[0-9]+$ ]]; then queue_len="0"; fi
   else
     queue_len="(invalid json)"
@@ -76,12 +74,7 @@ echo "Pending inbox files: $inbox_pending"
 
 last_archived=""
 if dir_exists "$INBOX_DONE"; then
-  # Use find + stat to avoid relying on ls ordering differences
-  last_archived="$(find "$INBOX_DONE" -maxdepth 1 -type f 2>/dev/null -print0 \
-    | xargs -0 stat -f '%m %N' 2>/dev/null \
-    | sort -nr \
-    | head -n 1 \
-    | cut -d' ' -f2- || true)"
+  last_archived="$(ls -1t "$INBOX_DONE" 2>/dev/null | head -n 1 || true)"
 fi
 
 if [ -n "${last_archived:-}" ]; then
@@ -104,7 +97,6 @@ if file_exists "$PROCESSED"; then
     processed_count="$(safe_jq 'keys | length' "$PROCESSED")"
     if ! [[ "$processed_count" =~ ^[0-9]+$ ]]; then processed_count="0"; fi
 
-    # Find the most recent entry by extracting a sortable timestamp.
     # Values may be:
     # - "2026-02-06T03:20:46Z"
     # - "needs-review:2026-02-06T03:20:46Z"
