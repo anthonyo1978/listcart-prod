@@ -1279,6 +1279,126 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Work for Us Section */}
+      <section id="work-for-us" className="py-24 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Work for Us
+            </h2>
+            <p className="text-xl text-indigo-100 max-w-3xl mx-auto">
+              We're always looking for passionate people who share our vision. While we don't have any open positions right now, we'd love to hear from you!
+            </p>
+          </div>
+
+          {/* Culture & Values */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-center">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Innovation First</h3>
+              <p className="text-indigo-100 text-sm">We embrace new ideas and aren't afraid to challenge the status quo.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-center">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Team Culture</h3>
+              <p className="text-indigo-100 text-sm">We work hard, support each other, and celebrate wins together.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-center">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Always Learning</h3>
+              <p className="text-indigo-100 text-sm">Growth mindset is at our core. We invest in our people.</p>
+            </div>
+          </div>
+
+          {/* Employee Testimonials */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-white text-center mb-8">What Our Team Says</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  name: 'Sarah Chen',
+                  role: 'Senior Engineer',
+                  quote: "The autonomy and trust here is incredible. I've grown more in one year than in five years elsewhere.",
+                  avatar: 'SC'
+                },
+                {
+                  name: 'Marcus Rodriguez',
+                  role: 'Product Designer',
+                  quote: "Working on real problems that help real estate agents every day is incredibly fulfilling.",
+                  avatar: 'MR'
+                },
+                {
+                  name: 'Emily Thompson',
+                  role: 'Customer Success',
+                  quote: "The team genuinely cares about each other. It's not just a job, it's a community.",
+                  avatar: 'ET'
+                },
+                {
+                  name: 'David Park',
+                  role: 'Backend Developer',
+                  quote: "Flexible hours, remote-friendly, and challenging technical problems. What more could you ask for?",
+                  avatar: 'DP'
+                },
+                {
+                  name: 'Jessica Williams',
+                  role: 'Marketing Lead',
+                  quote: "Leadership actually listens. My ideas have directly shaped our product direction.",
+                  avatar: 'JW'
+                },
+                {
+                  name: 'Alex Nguyen',
+                  role: 'QA Engineer',
+                  quote: "Best work-life balance I've ever had. They respect your time and personal life.",
+                  avatar: 'AN'
+                }
+              ].map((testimonial, i) => (
+                <div
+                  key={i}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-xl"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+                      {testimonial.avatar}
+                    </div>
+                    <div>
+                      <div className="font-bold text-white text-sm">{testimonial.name}</div>
+                      <div className="text-xs text-indigo-200">{testimonial.role}</div>
+                    </div>
+                  </div>
+                  <p className="text-indigo-100 text-sm italic">"{testimonial.quote}"</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact CTA */}
+          <div className="text-center bg-white/10 backdrop-blur-sm p-8 rounded-2xl max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">Interested in Joining Us?</h3>
+            <p className="text-indigo-100 mb-6">
+              We may not have open positions today, but great talent is always welcome. Send us your resume and tell us why you'd be a great fit.
+            </p>
+            <a
+              href="mailto:careers@listcart.io"
+              className="inline-block px-8 py-4 bg-white text-indigo-600 font-semibold rounded-full text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="max-w-7xl mx-auto px-6">

@@ -113,6 +113,16 @@ export function Navbar() {
             >
               About Us
             </button>
+            <button
+              onClick={() => scrollToSection('work-for-us')}
+              className={`text-sm font-medium transition-colors hover:text-blue-500 ${
+                isScrolled
+                  ? 'text-gray-700 dark:text-gray-300'
+                  : 'text-white drop-shadow-lg'
+              }`}
+            >
+              Work for Us
+            </button>
             <Link
               href="/support"
               className={`text-sm font-medium transition-colors hover:text-blue-500 ${
