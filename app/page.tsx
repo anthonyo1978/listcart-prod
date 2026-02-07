@@ -1051,11 +1051,18 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
               <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
               <p className="text-blue-100">
                 To give real estate agents back their most valuable resource: time. We believe coordination shouldn't be the bottleneck in closing deals.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
+              <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
+              <p className="text-blue-100">
+                Our vision is to simplify and streamline the real estate workflow by harnessing technology that works for you, making your job easier and helping you succeed financially.
               </p>
             </div>
 
