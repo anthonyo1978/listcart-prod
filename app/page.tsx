@@ -135,8 +135,8 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      {/* ORIGINAL COLORS (restore after Black Friday): bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
+      {/* THEME TOGGLE: Pride Month rainbow gradient. ORIGINAL COLORS: bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-red-500 via-yellow-400 via-green-500 via-blue-500 to-purple-600 overflow-hidden">
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -149,33 +149,33 @@ export default function Home() {
             {/* Main Headline */}
             <FlipHero />
 
-            {/* Black Friday Sale Banner */}
-            <div className="inline-block px-6 py-2 bg-white text-black font-bold text-lg md:text-xl rounded-full shadow-lg mb-4">
-              🖤 BLACK FRIDAY SALE – Limited Time Offer! 🖤
+            {/* THEME TOGGLE: Pride Month Banner. ORIGINAL: None (feature banners are seasonal) */}
+            <div className="inline-block px-6 py-2 bg-white text-purple-700 font-bold text-lg md:text-xl rounded-full shadow-lg mb-4">
+              🏳️‍🌈 Happy Pride Month – Celebrating Love & Inclusion! 🏳️‍🌈
             </div>
 
             {/* Subheadline */}
-            {/* ORIGINAL COLOR (restore after Black Friday): text-blue-100 */}
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-lg">
+            {/* THEME TOGGLE: Pride Month white text. ORIGINAL COLOR: text-blue-100 */}
+            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto drop-shadow-lg">
               The all-in-one platform that transforms property listing coordination from hours of email chaos into minutes of streamlined collaboration.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              {/* ORIGINAL COLOR (restore after Black Friday): text-blue-600 */}
+              {/* THEME TOGGLE: Pride Month purple CTA. ORIGINAL COLOR: text-blue-600 */}
               <Link
                 href="/create"
-                className="px-8 py-4 bg-white text-black font-semibold rounded-full text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="px-8 py-4 bg-white text-purple-700 font-semibold rounded-full text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 Create Your First ListCart
               </Link>
-              {/* ORIGINAL COLORS (restore after Black Friday): bg-yellow-500/20 hover:bg-blue-500/30 */}
+              {/* THEME TOGGLE: Pride Month secondary button. ORIGINAL COLORS: bg-yellow-500/20 hover:bg-blue-500/30 */}
               <button
                 onClick={() => {
                   const element = document.getElementById('features')
                   if (element) element.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-full text-lg border-2 border-white/50 hover:bg-white/30 hover:scale-105 transition-all duration-300"
+                className="px-8 py-4 bg-white/30 backdrop-blur-sm text-white font-semibold rounded-full text-lg border-2 border-white/70 hover:bg-white/40 hover:scale-105 transition-all duration-300"
               >
                 See How It Works
               </button>
@@ -183,8 +183,8 @@ export default function Home() {
 
             {/* Search Box */}
             <div className="pt-8">
-              {/* ORIGINAL COLOR (restore after Black Friday): text-blue-100 */}
-              <p className="text-gray-300 text-sm mb-3">Or access an existing ListCart:</p>
+              {/* THEME TOGGLE: Pride Month white text. ORIGINAL COLOR: text-blue-100 */}
+              <p className="text-white/90 text-sm mb-3">Or access an existing ListCart:</p>
               <CartSearchBox />
             </div>
           </div>
