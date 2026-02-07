@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 export default async function MyCartsPage() {
   // Fetch all carts for the authenticated user
   // TODO: In production, filter by authenticated user's email
-  const carts = await prisma.cart.findMany({
+  const cartsRaw = await prisma.cart.findMany({
     // where: { agentEmail: 'lee.sales@estates.com.au' }, // Enable in production
     orderBy: {
       createdAt: 'desc',
@@ -33,6 +33,14 @@ export default async function MyCartsPage() {
       },
     },
   })
+
+  // Convert Date objects to ISO strings for client component serialization
+  const carts = cartsRaw.map((cart) => ({
+    ...cart,
+    createdAt: cart.createdAt.toISOString(),
+    updatedAt: cart.updatedAt.toISOString(),
+    approvedAt: cart.approvedAt?.toISOString() ?? null,
+  }))
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">

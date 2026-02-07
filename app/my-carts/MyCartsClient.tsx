@@ -11,9 +11,9 @@ type CartSummary = {
   propertyAddress: string
   vendorName: string
   agentName: string | null
-  createdAt: Date
-  updatedAt: Date
-  approvedAt: Date | null
+  createdAt: string
+  updatedAt: string
+  approvedAt: string | null
   totalCents: number
   items: {
     id: string
