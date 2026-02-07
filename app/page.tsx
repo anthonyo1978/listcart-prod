@@ -77,7 +77,7 @@ function FlipHero() {
   }, [])
 
   return (
-    <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl inline-block">
+    <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold text-white drop-shadow-2xl inline-block">
       {displayChars.map((ch, i) => (
         <span
           key={i}
@@ -147,28 +147,28 @@ export default function Home() {
           }}></div>
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-6 text-center">
-          <div className="space-y-8">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+          <div className="space-y-6 sm:space-y-8">
             {/* Main Headline */}
             <FlipHero />
 
             {/* Black Friday Sale Banner */}
-            <div className="inline-block px-6 py-2 bg-white text-black font-bold text-lg md:text-xl rounded-full shadow-lg mb-4">
+            <div className="inline-block px-4 sm:px-6 py-2 bg-white text-black font-bold text-sm sm:text-lg md:text-xl rounded-full shadow-lg mb-4">
               🖤 BLACK FRIDAY SALE – Limited Time Offer! 🖤
             </div>
 
             {/* Subheadline */}
             {/* ORIGINAL COLOR (restore after Black Friday): text-blue-100 */}
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-lg">
+            <p className="text-base sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-lg px-2 sm:px-0">
               The all-in-one platform that transforms property listing coordination from hours of email chaos into minutes of streamlined collaboration.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
               {/* ORIGINAL COLOR (restore after Black Friday): text-blue-600 */}
               <Link
                 href="/create"
-                className="px-8 py-4 bg-white text-black font-semibold rounded-full text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-full text-base sm:text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 Create Your First ListCart
               </Link>
@@ -178,16 +178,16 @@ export default function Home() {
                   const element = document.getElementById('features')
                   if (element) element.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-full text-lg border-2 border-white/50 hover:bg-white/30 hover:scale-105 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-full text-base sm:text-lg border-2 border-white/50 hover:bg-white/30 hover:scale-105 transition-all duration-300"
               >
                 See How It Works
               </button>
             </div>
 
             {/* Search Box */}
-            <div className="pt-8">
+            <div className="pt-4 sm:pt-8">
               {/* ORIGINAL COLOR (restore after Black Friday): text-blue-100 */}
-              <p className="text-gray-300 text-sm mb-3">Or access an existing ListCart:</p>
+              <p className="text-gray-300 text-xs sm:text-sm mb-2 sm:mb-3">Or access an existing ListCart:</p>
               <CartSearchBox />
             </div>
           </div>
