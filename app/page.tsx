@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CartSearchBox } from '@/components/CartSearchBox'
+import { WalkingCat } from '@/components/WalkingCat'
 import { useState, useEffect } from 'react'
 
 const HERO_TEXT = 'Real Estate Listing Automation that Drives Revenue'
@@ -98,6 +99,8 @@ function FlipHero() {
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
+      {/* Walking cat animation */}
+      <WalkingCat />
       {/* Animations for floating cart icons */}
       <style>{`
         @keyframes float-right {
