@@ -5,7 +5,7 @@ import { Navbar } from '@/components/Navbar'
 import { CartSearchBox } from '@/components/CartSearchBox'
 import { useState, useEffect } from 'react'
 
-const HERO_TEXT = 'Automate and monetise the listing process'
+const HERO_TEXT = 'Real Estate Listing Automation that Drives Revenue'
 const FLIP_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
 function FlipHero() {
