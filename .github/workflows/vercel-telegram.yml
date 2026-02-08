@@ -63,7 +63,7 @@ jobs:
             fi
 
             info="$(curl -fsSL -H "$auth" "https://api.vercel.com/v13/deployments/${dep_id}${suffix}")"
-            state="$(echo "$info" | jq -r '.state')"
+            state="$(echo "$info" | jq -r '.readyState // .state')"
             url="$(echo "$info" | jq -r '.url')"
             inspector="$(echo "$info" | jq -r '.inspectorUrl // empty')"
 
