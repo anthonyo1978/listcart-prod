@@ -6,7 +6,6 @@ on:
 
 jobs:
   notify:
-    if: steps.changes.outputs.tickets != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -108,7 +107,7 @@ jobs:
           echo "deployment_state=TIMEOUT" >> "$GITHUB_OUTPUT"
 
       - name: Send Telegram notification
-        if: always()
+        if: steps.changes.outputs.tickets != 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
