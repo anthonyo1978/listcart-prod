@@ -33,7 +33,8 @@ fail() {
 cd "$(dirname "$0")/.."
 
 # Sync first to avoid push rejection
-git pull --rebase origin main || fail "git pull --rebase failed"
+git pull --rebase --autostash origin main || fail "git pull --rebase failed"
+
 
 # Validate file exists in repo working tree
 [[ -f "${FILE}" ]] || fail "file not found in repo working tree: ${FILE}"
