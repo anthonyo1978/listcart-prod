@@ -6,12 +6,20 @@ on:
 
 jobs:
   notify:
+    if: steps.changes.outputs.tickets != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Detect ticket-only change
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            tickets:
+              - 'tickets/**'
 
       - name: Wait for Vercel deployment (by commit SHA)
         id: vercel
