@@ -34,7 +34,8 @@ export function WalkingCat() {
           75% { transform: translateY(-3px); }
         }
         .cat-container {
-          animation: walk-across 12s linear infinite;
+          /* Animation runs once per page load - forwards keeps the cat off-screen after completion */
+          animation: walk-across 12s linear forwards;
         }
         .cat-body {
           animation: body-bob 0.4s ease-in-out infinite;
