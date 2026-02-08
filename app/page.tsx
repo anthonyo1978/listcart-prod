@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CartSearchBox } from '@/components/CartSearchBox'
 import { WalkingCat } from '@/components/WalkingCat'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 const HERO_TEXT = 'Real Estate Listing Automation that Drives Revenue'
 const FLIP_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -93,6 +93,63 @@ function FlipHero() {
         </span>
       ))}
     </h1>
+  )
+}
+
+interface ServiceCardProps {
+  title: string
+  image: string
+  gradient: string
+  darkGradient: string
+  baseOffset: number
+  index: number
+}
+
+function ParallaxServiceCard({ title, image, gradient, darkGradient, baseOffset, index }: ServiceCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [parallaxY, setParallaxY] = useState(0)
+
+  const handleScroll = useCallback(() => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const windowHeight = window.innerHeight
+    const cardCenter = rect.top + rect.height / 2
+    const viewportCenter = windowHeight / 2
+    const distance = (cardCenter - viewportCenter) / windowHeight
+    const parallaxAmount = distance * (30 + baseOffset)
+    setParallaxY(parallaxAmount)
+  }, [baseOffset])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
+
+  return (
+    <div
+      ref={cardRef}
+      className={`group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-br ${gradient} ${darkGradient} p-3`}
+    >
+      <div
+        className="relative overflow-hidden rounded-xl"
+        style={{ transform: `translateY(${parallaxY}px)`, transition: 'transform 0.1s ease-out' }}
+      >
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+      </div>
+      <h3
+        className="mt-3 text-center text-lg font-semibold text-gray-800 dark:text-white"
+        style={{ transform: `translateY(${parallaxY * 0.5}px)`, transition: 'transform 0.1s ease-out' }}
+      >
+        {title}
+      </h3>
+    </div>
   )
 }
 
@@ -328,6 +385,52 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Service Images with Parallax Effect */}
+        <div className="mt-16 max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: 'Photography',
+                image: 'https://images.unsplash.com/photo-1554080353-a576cf803bda?w=400&h=300&fit=crop',
+                gradient: 'from-amber-100 via-orange-50 to-yellow-100',
+                darkGradient: 'dark:from-amber-900/30 dark:via-orange-900/20 dark:to-yellow-900/30',
+                baseOffset: 0,
+              },
+              {
+                title: 'Painting',
+                image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=300&fit=crop',
+                gradient: 'from-pink-100 via-rose-50 to-red-100',
+                darkGradient: 'dark:from-pink-900/30 dark:via-rose-900/20 dark:to-red-900/30',
+                baseOffset: 20,
+              },
+              {
+                title: 'Signwriting',
+                image: 'https://images.unsplash.com/photo-1563906267088-b029e7101114?w=400&h=300&fit=crop',
+                gradient: 'from-emerald-100 via-teal-50 to-green-100',
+                darkGradient: 'dark:from-emerald-900/30 dark:via-teal-900/20 dark:to-green-900/30',
+                baseOffset: 10,
+              },
+              {
+                title: 'Landscaping',
+                image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=400&h=300&fit=crop',
+                gradient: 'from-lime-100 via-green-50 to-emerald-100',
+                darkGradient: 'dark:from-lime-900/30 dark:via-green-900/20 dark:to-emerald-900/30',
+                baseOffset: 30,
+              },
+            ].map((service, index) => (
+              <ParallaxServiceCard
+                key={service.title}
+                title={service.title}
+                image={service.image}
+                gradient={service.gradient}
+                darkGradient={service.darkGradient}
+                baseOffset={service.baseOffset}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
