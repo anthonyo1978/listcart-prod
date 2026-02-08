@@ -5,95 +5,6 @@ import { Navbar } from '@/components/Navbar'
 import { CartSearchBox } from '@/components/CartSearchBox'
 import { useState, useEffect, useRef, useCallback } from 'react'
 
-const HERO_TEXT = 'Real Estate Listing Automation that Drives Revenue'
-const FLIP_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-
-function FlipHero() {
-  const [displayChars, setDisplayChars] = useState<string[]>(() =>
-    Array.from(HERO_TEXT, (ch) =>
-      ch === ' ' ? ' ' : FLIP_CHARS[Math.floor(Math.random() * FLIP_CHARS.length)]
-    )
-  )
-  const [settled, setSettled] = useState<boolean[]>(() =>
-    Array.from(HERO_TEXT, () => false)
-  )
-
-  useEffect(() => {
-    const totalLetters = HERO_TEXT.replace(/ /g, '').length
-    const perLetterDelay = 40
-    const flipsPerChar = 6
-    const flipInterval = 50
-
-    let letterIndex = 0
-    const timeouts: ReturnType<typeof setTimeout>[] = []
-
-    for (let i = 0; i < HERO_TEXT.length; i++) {
-      if (HERO_TEXT[i] === ' ') continue
-      const delay = letterIndex * perLetterDelay
-      const charIdx = i
-
-      for (let f = 0; f < flipsPerChar; f++) {
-        timeouts.push(
-          setTimeout(() => {
-            setDisplayChars((prev) => {
-              const next = [...prev]
-              next[charIdx] =
-                FLIP_CHARS[Math.floor(Math.random() * FLIP_CHARS.length)]
-              return next
-            })
-          }, delay + f * flipInterval)
-        )
-      }
-
-      timeouts.push(
-        setTimeout(() => {
-          setDisplayChars((prev) => {
-            const next = [...prev]
-            next[charIdx] = HERO_TEXT[charIdx]
-            return next
-          })
-          setSettled((prev) => {
-            const next = [...prev]
-            next[charIdx] = true
-            return next
-          })
-        }, delay + flipsPerChar * flipInterval)
-      )
-
-      letterIndex++
-    }
-
-    const totalDuration =
-      (totalLetters - 1) * perLetterDelay + flipsPerChar * flipInterval
-    timeouts.push(
-      setTimeout(() => {
-        setDisplayChars(Array.from(HERO_TEXT))
-        setSettled(Array.from(HERO_TEXT, () => true))
-      }, totalDuration + 100)
-    )
-
-    return () => timeouts.forEach(clearTimeout)
-  }, [])
-
-  return (
-    <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold text-white drop-shadow-2xl inline-block">
-      {displayChars.map((ch, i) => (
-        <span
-          key={i}
-          className={
-            ch === ' '
-              ? 'inline-block w-[0.3em]'
-              : `inline-block transition-transform duration-75 ${
-                  settled[i] ? '' : 'flip-tick'
-                }`
-          }
-        >
-          {ch === ' ' ? '\u00A0' : ch}
-        </span>
-      ))}
-    </h1>
-  )
-}
 
 interface ServiceCardProps {
   title: string
@@ -171,14 +82,6 @@ export default function Home() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-8px); }
         }
-        @keyframes flip-tick {
-          0% { transform: rotateX(0deg); }
-          50% { transform: rotateX(90deg); }
-          100% { transform: rotateX(0deg); }
-        }
-        .flip-tick {
-          animation: flip-tick 0.1s ease-in-out;
-        }
         @keyframes bunny-hop {
           0%, 100% { transform: translateY(0) translateX(0); }
           15% { transform: translateY(-12px) translateX(20px); }
@@ -192,7 +95,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-orange-50 to-rose-100 overflow-hidden">
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -203,10 +106,12 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="space-y-6 sm:space-y-8">
             {/* Main Headline */}
-            <FlipHero />
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-gray-800 drop-shadow-sm leading-tight">
+              The Real Estate Listing Process,<br className="hidden sm:block" /> Completely Reimagined
+            </h1>
 
             {/* Subheadline */}
-            <p className="text-base sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto drop-shadow-lg px-2 sm:px-0">
+            <p className="text-base sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto px-2 sm:px-0">
               The all-in-one platform that transforms property listing coordination from hours of email chaos into minutes of streamlined collaboration.
             </p>
 
@@ -214,7 +119,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
               <Link
                 href="/create"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-600 font-semibold rounded-full text-base sm:text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-amber-600 text-white font-semibold rounded-full text-base sm:text-lg shadow-lg hover:shadow-xl hover:bg-amber-700 hover:scale-105 transition-all duration-300"
               >
                 Create Your First ListCart
               </Link>
@@ -223,7 +128,7 @@ export default function Home() {
                   const element = document.getElementById('features')
                   if (element) element.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-yellow-500/20 backdrop-blur-sm text-white font-semibold rounded-full text-base sm:text-lg border-2 border-white/50 hover:bg-blue-500/30 hover:scale-105 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/60 backdrop-blur-sm text-gray-700 font-semibold rounded-full text-base sm:text-lg border border-amber-200 hover:bg-white/80 hover:scale-105 transition-all duration-300"
               >
                 See How It Works
               </button>
@@ -231,7 +136,7 @@ export default function Home() {
 
             {/* Search Box */}
             <div className="pt-4 sm:pt-8">
-              <p className="text-blue-100 text-xs sm:text-sm mb-2 sm:mb-3">Or access an existing ListCart:</p>
+              <p className="text-gray-500 text-xs sm:text-sm mb-2 sm:mb-3">Or access an existing ListCart:</p>
               <CartSearchBox />
             </div>
           </div>
@@ -240,14 +145,14 @@ export default function Home() {
         {/* Floating cart icons in hero */}
         <div className="absolute bottom-24 left-0 right-0 overflow-hidden pointer-events-none opacity-20">
           <div style={{ animation: 'float-right 18s ease-in-out infinite' }}>
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
           </div>
         </div>
         <div className="absolute bottom-36 left-0 right-0 overflow-hidden pointer-events-none opacity-15">
           <div style={{ animation: 'float-left 22s ease-in-out infinite' }}>
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
           </div>
@@ -255,7 +160,7 @@ export default function Home() {
 
         {/* Animated hopping bunny */}
         <div className="absolute bottom-20 left-8 pointer-events-none opacity-30" style={{ animation: 'bunny-hop 4s ease-in-out infinite' }}>
-          <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="w-8 h-8 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
             <ellipse cx="12" cy="18" rx="6" ry="4" />
             <circle cx="12" cy="10" r="5" />
             <ellipse cx="9" cy="4" rx="1.5" ry="4" />
@@ -270,7 +175,7 @@ export default function Home() {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <svg
-            className="w-6 h-6 text-white"
+            className="w-6 h-6 text-amber-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
