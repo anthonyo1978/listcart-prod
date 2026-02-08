@@ -113,7 +113,8 @@ jobs:
             msg="⚠️ Deploy status unknown (no Vercel deployment found yet)\n${REPO}@${short}\nCheck Vercel dashboard."
           else
             if [ "${DEP_STATE}" = "READY" ]; then
-              msg="✅ Deployed: ${REPO}@${short}\n${DEP_URL}"
+              msg="👷 Dev team finished!\n\nYour ticket has been built and deployed.\n\nPlease refresh the app and review the changes.\nFeel free to send any updates, tweaks, or new ideas at any time.\n\n${DEP_URL}"msg="👷 Dev team finished!\n\nYour ticket has been built and deployed.\n\nPlease refresh the app and review the changes.\nFeel free to send any updates, tweaks, or new ideas at any time.\n\n${DEP_URL}"
+
             else
               msg="❌ Deploy ${DEP_STATE}: ${REPO}@${short}"
               if [ -n "${DEP_URL:-}" ]; then msg="${msg}\n${DEP_URL}"; fi
