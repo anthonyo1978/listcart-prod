@@ -1,0 +1,127 @@
+name: Vercel Deploy → Telegram
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Wait for Vercel deployment (by commit SHA)
+        id: vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          auth="Authorization: Bearer ${VERCEL_TOKEN}"
+
+          base="https://api.vercel.com/v6/deployments"
+          qs="projectId=${VERCEL_PROJECT_ID}&limit=20"
+          if [ -n "${VERCEL_TEAM_ID:-}" ]; then
+            qs="${qs}&teamId=${VERCEL_TEAM_ID}"
+          fi
+
+          echo "Looking for Vercel deployment for sha=${GITHUB_SHA}"
+          deadline=$(( $(date +%s) + 12*60 ))
+          dep_id=""
+
+          while [ $(date +%s) -lt "$deadline" ]; do
+            json="$(curl -fsSL -H "$auth" "${base}?${qs}")"
+
+            dep_id="$(echo "$json" | jq -r --arg sha "$GITHUB_SHA" '
+              .deployments
+              | map(select(.meta.githubCommitSha == $sha))
+              | (.[0].uid // empty)
+            ')"
+
+            if [ -n "$dep_id" ]; then
+              echo "Found deployment uid=${dep_id}"
+              break
+            fi
+
+            echo "No deployment yet; sleeping 10s..."
+            sleep 10
+          done
+
+          if [ -z "$dep_id" ]; then
+            echo "deployment_found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          dep_deadline=$(( $(date +%s) + 12*60 ))
+          while [ $(date +%s) -lt "$dep_deadline" ]; do
+            suffix=""
+            if [ -n "${VERCEL_TEAM_ID:-}" ]; then
+              suffix="?teamId=${VERCEL_TEAM_ID}"
+            fi
+
+            info="$(curl -fsSL -H "$auth" "https://api.vercel.com/v13/deployments/${dep_id}${suffix}")"
+            state="$(echo "$info" | jq -r '.state')"
+            url="$(echo "$info" | jq -r '.url')"
+            inspector="$(echo "$info" | jq -r '.inspectorUrl // empty')"
+
+            echo "state=${state} url=${url}"
+
+            if [ "$state" = "READY" ]; then
+              echo "deployment_found=true" >> "$GITHUB_OUTPUT"
+              echo "deployment_state=READY" >> "$GITHUB_OUTPUT"
+              echo "deployment_url=https://${url}" >> "$GITHUB_OUTPUT"
+              echo "deployment_inspector=${inspector}" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            if [ "$state" = "ERROR" ] || [ "$state" = "CANCELED" ]; then
+              echo "deployment_found=true" >> "$GITHUB_OUTPUT"
+              echo "deployment_state=${state}" >> "$GITHUB_OUTPUT"
+              echo "deployment_url=https://${url}" >> "$GITHUB_OUTPUT"
+              echo "deployment_inspector=${inspector}" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            sleep 10
+          done
+
+          echo "deployment_found=true" >> "$GITHUB_OUTPUT"
+          echo "deployment_state=TIMEOUT" >> "$GITHUB_OUTPUT"
+
+      - name: Send Telegram notification
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+          DEP_FOUND: ${{ steps.vercel.outputs.deployment_found }}
+          DEP_STATE: ${{ steps.vercel.outputs.deployment_state }}
+          DEP_URL: ${{ steps.vercel.outputs.deployment_url }}
+          DEP_INSPECTOR: ${{ steps.vercel.outputs.deployment_inspector }}
+        run: |
+          set -euo pipefail
+
+          short="${SHA:0:7}"
+
+          if [ "${DEP_FOUND}" != "true" ]; then
+            msg="⚠️ Deploy status unknown (no Vercel deployment found yet)\n${REPO}@${short}\nCheck Vercel dashboard."
+          else
+            if [ "${DEP_STATE}" = "READY" ]; then
+              msg="✅ Deployed: ${REPO}@${short}\n${DEP_URL}"
+            else
+              msg="❌ Deploy ${DEP_STATE}: ${REPO}@${short}"
+              if [ -n "${DEP_URL:-}" ]; then msg="${msg}\n${DEP_URL}"; fi
+              if [ -n "${DEP_INSPECTOR:-}" ]; then msg="${msg}\nInspector: ${DEP_INSPECTOR}"; fi
+            fi
+          fi
+
+          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${msg}" \
+            -d "disable_web_page_preview=true" >/dev/null
+
+          echo "OK: sent"
