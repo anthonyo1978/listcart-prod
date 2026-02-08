@@ -17,10 +17,10 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
           GITHUB_SHA: ${{ github.sha }}
-          TICKET_ID="$(git log -1 --pretty=%B | grep -oE 'TICKET-[0-9]+' || echo 'your ticket')"
-
+          
         run: |
           set -euo pipefail
+TICKET_ID="$(git log -1 --pretty=%B | grep -oE 'TICKET-[0-9]+' || echo 'your ticket')"
 
           auth="Authorization: Bearer ${VERCEL_TOKEN}"
 
@@ -115,7 +115,7 @@ jobs:
             msg="⚠️ Deploy status unknown (no Vercel deployment found yet)\n${REPO}@${short}\nCheck Vercel dashboard."
           else
             if [ "${DEP_STATE}" = "READY" ]; then
-              msg="👷 The Dev team is finished!\n\n${TICKET_ID} has been coded and deployed. Good job!\n\nPlease refresh the app and review the changes.\nFeel free to send any changes, updates, or additions ROCK ON!!.\n\n${DEP_URL}"
+              msg="👷 The Dev team is finished!\n\n${TICKET_ID} has been built and deployed. Good job!\n\nPlease refresh the app and review the changes.\nFeel free to send any changes. ROCK ON.\n\n${DEP_URL}"
 
             else
               msg="❌ Deploy ${DEP_STATE}: ${REPO}@${short}"
