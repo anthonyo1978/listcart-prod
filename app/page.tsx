@@ -389,29 +389,29 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: 'Photography',
-                image: 'https://images.unsplash.com/photo-1554080353-a576cf803bda?w=400&h=300&fit=crop',
+                title: 'Modern Living',
+                image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop',
                 gradient: 'from-amber-100 via-orange-50 to-yellow-100',
                 darkGradient: 'dark:from-amber-900/30 dark:via-orange-900/20 dark:to-yellow-900/30',
                 baseOffset: 0,
               },
               {
-                title: 'Painting',
-                image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=300&fit=crop',
+                title: 'Family Homes',
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop',
                 gradient: 'from-pink-100 via-rose-50 to-red-100',
                 darkGradient: 'dark:from-pink-900/30 dark:via-rose-900/20 dark:to-red-900/30',
                 baseOffset: 20,
               },
               {
-                title: 'Signwriting',
-                image: 'https://images.unsplash.com/photo-1563906267088-b029e7101114?w=400&h=300&fit=crop',
+                title: 'Luxury Estates',
+                image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop',
                 gradient: 'from-emerald-100 via-teal-50 to-green-100',
                 darkGradient: 'dark:from-emerald-900/30 dark:via-teal-900/20 dark:to-green-900/30',
                 baseOffset: 10,
               },
               {
-                title: 'Landscaping',
-                image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=400&h=300&fit=crop',
+                title: 'Dream Properties',
+                image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop',
                 gradient: 'from-lime-100 via-green-50 to-emerald-100',
                 darkGradient: 'dark:from-lime-900/30 dark:via-green-900/20 dark:to-emerald-900/30',
                 baseOffset: 30,
