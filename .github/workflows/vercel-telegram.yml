@@ -68,6 +68,8 @@ jobs:
             inspector="$(echo "$info" | jq -r '.inspectorUrl // empty')"
 
             echo "state=${state} url=${url}"
+            echo "$info" | jq '.readyState, .state, .url' || true
+
 
             if [ "$state" = "READY" ]; then
               echo "deployment_found=true" >> "$GITHUB_OUTPUT"
