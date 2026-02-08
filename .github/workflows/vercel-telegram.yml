@@ -112,6 +112,9 @@ jobs:
           DEP_INSPECTOR: ${{ steps.vercel.outputs.deployment_inspector }}
         run: |
           set -euo pipefail
+          TICKET_ID="your ticket"
+          TICKET_ID="$(git log -1 --pretty=%B | grep -oE 'TICKET-[0-9]+' | head -n 1 || true)"
+          [ -n "${TICKET_ID:-}" ] || TICKET_ID="your ticket"
 
           short="${SHA:0:7}"
 
