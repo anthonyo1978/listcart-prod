@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CartSearchBox } from '@/components/CartSearchBox'
+import { RecentCarts } from '@/components/RecentCarts'
 import { useState, useEffect, useRef, useCallback } from 'react'
 
 
@@ -138,6 +139,7 @@ export default function Home() {
             <div className="pt-4 sm:pt-8">
               <p className="text-gray-500 text-xs sm:text-sm mb-2 sm:mb-3">Or access an existing ListCart:</p>
               <CartSearchBox />
+              <RecentCarts />
             </div>
           </div>
         </div>
@@ -1064,6 +1066,112 @@ export default function Home() {
             <button className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-full text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
               Join Our Beta Program
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Security Section */}
+      <section id="trust" className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 rounded-full mb-6">
+              <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-green-700 dark:text-green-400 font-semibold text-sm">Enterprise-Grade Security</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              Your Data Stays in Australia 🇦🇺
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              We take security seriously. ListCart is proudly Australian-built and all your data is hosted right here on Australian soil.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Australian Hosted */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-2xl border-2 border-green-200 dark:border-green-800">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <span className="text-3xl">🇦🇺</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                100% Australian Hosted
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                All data stored in Sydney, Australia. Your client information never leaves the country. Full compliance with Australian Privacy Principles (APPs).
+              </p>
+            </div>
+
+            {/* Bank-Level Encryption */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-2xl border-2 border-blue-200 dark:border-blue-800">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Bank-Level Encryption
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                256-bit SSL encryption for all data in transit. Your vendor communications and financial data are protected with enterprise-grade security.
+              </p>
+            </div>
+
+            {/* Australian Company */}
+            <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-2xl border-2 border-amber-200 dark:border-amber-800">
+              <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Australian Owned & Operated
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Built by Australian real estate professionals who understand local regulations, REIQ standards, and the unique needs of Aussie agents.
+              </p>
+            </div>
+          </div>
+
+          {/* Trust Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-12 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-medium">SSL Secured</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-medium">Privacy Compliant</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-medium">99.9% Uptime</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-medium">24/7 Monitoring</span>
+            </div>
+          </div>
+
+          {/* Australian Map Illustration */}
+          <div className="mt-12 text-center">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+              Data Centre Location
+            </p>
+            <div className="inline-flex items-center gap-3 bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full">
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="font-semibold text-gray-700 dark:text-gray-300">Sydney, NSW, Australia</span>
+              <span className="text-2xl">🦘</span>
+            </div>
           </div>
         </div>
       </section>

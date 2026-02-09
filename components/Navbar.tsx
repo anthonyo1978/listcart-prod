@@ -57,7 +57,7 @@ export function Navbar() {
                   : 'text-white drop-shadow-lg'
               }`}
             >
-              ListCart AI AI
+              ListCart AI
             </span>
           </Link>
 
@@ -102,6 +102,16 @@ export function Navbar() {
               }`}
             >
               Resources
+            </button>
+            <button
+              onClick={() => scrollToSection('trust')}
+              className={`text-sm font-medium transition-colors hover:text-blue-500 ${
+                isScrolled
+                  ? 'text-gray-700 dark:text-gray-300'
+                  : 'text-white drop-shadow-lg'
+              }`}
+            >
+              Trust
             </button>
             <button
               onClick={() => scrollToSection('about')}

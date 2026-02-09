@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    // Get limit from query params (default to all)
+    const { searchParams } = new URL(request.url)
+    const limitParam = searchParams.get('limit')
+    const limit = limitParam ? parseInt(limitParam, 10) : undefined
+
     // TODO: In production, filter by authenticated user's email
     // For MVP, we'll get all carts (simulating lee.sales@estates.com.au)
     
@@ -11,6 +17,7 @@ export async function GET() {
       orderBy: {
         createdAt: 'desc',
       },
+      take: limit,
       select: {
         id: true,
         friendlyId: true,
