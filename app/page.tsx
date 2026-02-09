@@ -95,7 +95,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 via-blue-50 to-indigo-100 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 overflow-hidden">
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -327,7 +327,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-24 bg-gray-50 dark:bg-gray-800">
+      <section id="features" className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -493,7 +493,7 @@ export default function Home() {
       </section>
 
       {/* Animated cart divider */}
-      <div className="relative bg-gray-50 dark:bg-gray-800 overflow-hidden h-16">
+      <div className="relative bg-white dark:bg-gray-900 overflow-hidden h-16">
         <div className="absolute inset-0 flex items-center justify-center gap-32 opacity-10 dark:opacity-20 pointer-events-none">
           {/* Person pushing cart - left */}
           <div style={{ animation: 'bob 3s ease-in-out infinite' }}>
@@ -519,7 +519,7 @@ export default function Home() {
       </div>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-16 bg-sky-500">
+      <section id="pricing" className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-5xl mx-auto px-6">
           {/* Limited Time Promo Banner */}
           <div className="mb-10 relative">
@@ -773,7 +773,7 @@ export default function Home() {
       </div>
 
       {/* Roadmap Section */}
-      <section id="roadmap" className="py-24 bg-gray-50 dark:bg-gray-800">
+      <section id="roadmap" className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -981,7 +981,7 @@ export default function Home() {
       </section>
 
       {/* Awards & Recognition Section */}
-      <section id="awards" className="py-24 bg-gradient-to-br from-sky-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
+      <section id="awards" className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -1025,7 +1025,7 @@ export default function Home() {
       </div>
 
       {/* About Us Section */}
-      <section id="about" className="py-24 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700">
+      <section id="about" className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -1069,7 +1069,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Carousel */}
-      <section id="testimonials" className="py-24 bg-gray-50 dark:bg-gray-800 overflow-hidden">
+      <section id="testimonials" className="py-24 bg-white dark:bg-gray-900 overflow-hidden">
         <style>{`
           @keyframes scroll-left {
             0% { transform: translateX(0); }
@@ -1232,7 +1232,7 @@ export default function Home() {
       </section>
 
       {/* Work for Us Section */}
-      <section id="work-for-us" className="py-24 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600">
+      <section id="work-for-us" className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
