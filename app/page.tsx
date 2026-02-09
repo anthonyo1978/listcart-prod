@@ -95,7 +95,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-orange-50 to-rose-100 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 via-blue-50 to-indigo-100 overflow-hidden">
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -119,7 +119,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
               <Link
                 href="/create"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-amber-600 text-white font-semibold rounded-full text-base sm:text-lg shadow-lg hover:shadow-xl hover:bg-amber-700 hover:scale-105 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-sky-600 text-white font-semibold rounded-full text-base sm:text-lg shadow-lg hover:shadow-xl hover:bg-sky-700 hover:scale-105 transition-all duration-300"
               >
                 Create Your First ListCart
               </Link>
@@ -128,7 +128,7 @@ export default function Home() {
                   const element = document.getElementById('features')
                   if (element) element.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/60 backdrop-blur-sm text-gray-700 font-semibold rounded-full text-base sm:text-lg border border-amber-200 hover:bg-white/80 hover:scale-105 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/60 backdrop-blur-sm text-gray-700 font-semibold rounded-full text-base sm:text-lg border border-sky-200 hover:bg-white/80 hover:scale-105 transition-all duration-300"
               >
                 See How It Works
               </button>
@@ -145,14 +145,14 @@ export default function Home() {
         {/* Floating cart icons in hero */}
         <div className="absolute bottom-24 left-0 right-0 overflow-hidden pointer-events-none opacity-20">
           <div style={{ animation: 'float-right 18s ease-in-out infinite' }}>
-            <svg className="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-10 h-10 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
           </div>
         </div>
         <div className="absolute bottom-36 left-0 right-0 overflow-hidden pointer-events-none opacity-15">
           <div style={{ animation: 'float-left 22s ease-in-out infinite' }}>
-            <svg className="w-8 h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
           </div>
@@ -160,7 +160,7 @@ export default function Home() {
 
         {/* Animated hopping bunny */}
         <div className="absolute bottom-20 left-8 pointer-events-none opacity-30" style={{ animation: 'bunny-hop 4s ease-in-out infinite' }}>
-          <svg className="w-8 h-8 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="w-8 h-8 text-sky-400" viewBox="0 0 24 24" fill="currentColor">
             <ellipse cx="12" cy="18" rx="6" ry="4" />
             <circle cx="12" cy="10" r="5" />
             <ellipse cx="9" cy="4" rx="1.5" ry="4" />
@@ -175,7 +175,7 @@ export default function Home() {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <svg
-            className="w-6 h-6 text-amber-600"
+            className="w-6 h-6 text-sky-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -286,29 +286,29 @@ export default function Home() {
               {
                 title: 'Modern Living',
                 image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop',
-                gradient: 'from-amber-100 via-orange-50 to-yellow-100',
-                darkGradient: 'dark:from-amber-900/30 dark:via-orange-900/20 dark:to-yellow-900/30',
+                gradient: 'from-sky-100 via-blue-50 to-cyan-100',
+                darkGradient: 'dark:from-sky-900/30 dark:via-blue-900/20 dark:to-cyan-900/30',
                 baseOffset: 0,
               },
               {
                 title: 'Family Homes',
                 image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop',
-                gradient: 'from-pink-100 via-rose-50 to-red-100',
-                darkGradient: 'dark:from-pink-900/30 dark:via-rose-900/20 dark:to-red-900/30',
+                gradient: 'from-blue-100 via-indigo-50 to-sky-100',
+                darkGradient: 'dark:from-blue-900/30 dark:via-indigo-900/20 dark:to-sky-900/30',
                 baseOffset: 20,
               },
               {
                 title: 'Luxury Estates',
                 image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop',
-                gradient: 'from-emerald-100 via-teal-50 to-green-100',
-                darkGradient: 'dark:from-emerald-900/30 dark:via-teal-900/20 dark:to-green-900/30',
+                gradient: 'from-indigo-100 via-blue-50 to-violet-100',
+                darkGradient: 'dark:from-indigo-900/30 dark:via-blue-900/20 dark:to-violet-900/30',
                 baseOffset: 10,
               },
               {
                 title: 'Dream Properties',
                 image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop',
-                gradient: 'from-lime-100 via-green-50 to-emerald-100',
-                darkGradient: 'dark:from-lime-900/30 dark:via-green-900/20 dark:to-emerald-900/30',
+                gradient: 'from-cyan-100 via-sky-50 to-blue-100',
+                darkGradient: 'dark:from-cyan-900/30 dark:via-sky-900/20 dark:to-blue-900/30',
                 baseOffset: 30,
               },
             ].map((service, index) => (
@@ -519,7 +519,7 @@ export default function Home() {
       </div>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-16 bg-yellow-500">
+      <section id="pricing" className="py-16 bg-sky-500">
         <div className="max-w-5xl mx-auto px-6">
           {/* Limited Time Promo Banner */}
           <div className="mb-10 relative">
@@ -981,7 +981,7 @@ export default function Home() {
       </section>
 
       {/* Awards & Recognition Section */}
-      <section id="awards" className="py-24 bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-gray-800 dark:to-gray-900">
+      <section id="awards" className="py-24 bg-gradient-to-br from-sky-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -994,7 +994,7 @@ export default function Home() {
 
           <div className="flex justify-center">
             <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow max-w-md text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
@@ -1005,7 +1005,7 @@ export default function Home() {
               <p className="text-gray-600 dark:text-gray-400 mb-4">
                 Nominated in the Builders Innovation Category for pioneering AI-powered vendor coordination in real estate.
               </p>
-              <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-sm font-medium">
+              <div className="inline-block px-4 py-2 bg-sky-100 dark:bg-sky-900/30 text-sky-800 dark:text-sky-300 rounded-full text-sm font-medium">
                 2026 Nominee
               </div>
             </div>
