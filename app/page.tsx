@@ -79,19 +79,6 @@ export default function Home() {
           50% { transform: translateX(-10%) translateY(-15px); }
           100% { transform: translateX(110%) translateY(0); }
         }
-        @keyframes bob {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes bunny-hop {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          15% { transform: translateY(-12px) translateX(20px); }
-          30% { transform: translateY(0) translateX(40px); }
-          45% { transform: translateY(-12px) translateX(60px); }
-          60% { transform: translateY(0) translateX(80px); }
-          75% { transform: translateY(-12px) translateX(60px); }
-          90% { transform: translateY(0) translateX(40px); }
-        }
       `}</style>
       <Navbar />
 
@@ -158,20 +145,6 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
           </div>
-        </div>
-
-        {/* Animated hopping bunny */}
-        <div className="absolute bottom-20 left-8 pointer-events-none opacity-30" style={{ animation: 'bunny-hop 4s ease-in-out infinite' }}>
-          <svg className="w-8 h-8 text-sky-400" viewBox="0 0 24 24" fill="currentColor">
-            <ellipse cx="12" cy="18" rx="6" ry="4" />
-            <circle cx="12" cy="10" r="5" />
-            <ellipse cx="9" cy="4" rx="1.5" ry="4" />
-            <ellipse cx="15" cy="4" rx="1.5" ry="4" />
-            <circle cx="10" cy="9" r="0.8" fill="currentColor" opacity="0.6" />
-            <circle cx="14" cy="9" r="0.8" fill="currentColor" opacity="0.6" />
-            <ellipse cx="12" cy="11" rx="0.8" ry="0.5" opacity="0.6" />
-            <circle cx="5" cy="18" r="2" />
-          </svg>
         </div>
 
         {/* Scroll indicator */}
@@ -493,32 +466,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Animated cart divider */}
-      <div className="relative bg-white dark:bg-gray-900 overflow-hidden h-16">
-        <div className="absolute inset-0 flex items-center justify-center gap-32 opacity-10 dark:opacity-20 pointer-events-none">
-          {/* Person pushing cart - left */}
-          <div style={{ animation: 'bob 3s ease-in-out infinite' }}>
-            <svg className="w-10 h-10 text-indigo-600 dark:text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
-              <circle cx="8" cy="4" r="2" />
-              <path d="M11 6H6l-1 6h4l1 4h2l-1-4 2-4H11zM16 10h-2l-.5 2H16l1 4h2l-1-4h2l-1-2h-3z" />
-            </svg>
-          </div>
-          {/* Cart icon - center */}
-          <div style={{ animation: 'bob 4s ease-in-out infinite 1s' }}>
-            <svg className="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
-            </svg>
-          </div>
-          {/* Person pushing cart - right */}
-          <div style={{ animation: 'bob 3.5s ease-in-out infinite 0.5s' }}>
-            <svg className="w-10 h-10 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-              <circle cx="8" cy="4" r="2" />
-              <path d="M11 6H6l-1 6h4l1 4h2l-1-4 2-4H11zM16 10h-2l-.5 2H16l1 4h2l-1-4h2l-1-2h-3z" />
-            </svg>
-          </div>
-        </div>
-      </div>
 
       {/* Pricing Section */}
       <section id="pricing" className="py-16 bg-white dark:bg-gray-900">
